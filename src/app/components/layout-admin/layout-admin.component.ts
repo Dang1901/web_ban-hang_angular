@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SidebarComponent } from '../layouts/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../layouts/header/header.component';
-import { DashboardComponent } from '../../view/dashboard/dashboard.component';
+import { DashboardComponent } from '../../view/admin/dashboard/dashboard.component';
 
 @Component({
   selector: 'app-layout-admin',
