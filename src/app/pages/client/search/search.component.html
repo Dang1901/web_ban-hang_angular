@@ -13,7 +13,7 @@
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">Giá: {{ product.price }}</p>
           <p class="card-text">Mô tả: {{ product.desc }}</p>
-          <a [routerLink]="['/products', product.id]" class="btn btn-primary"
+          <a [routerLink]="['../detail', product.id]" class="btn btn-primary"
             >Xem chi tiết</a
           >
         </div>

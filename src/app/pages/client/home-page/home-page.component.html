@@ -1,7 +1,7 @@
 <div class="container py-5">
   <p class="text-start fs-4 fw-medium mb-4">Danh sách sản phẩm</p>
   <div class="row g-3">
-    <div class="col-md-3" *ngFor="let product of products">
+    <div class="col-md-3" *ngFor="let product of products ">
       <a
         [routerLink]="['/detail', product.id]"
         class="card bg-light text-dark shadow-sm text-decoration-none"

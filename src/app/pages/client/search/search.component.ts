@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class SearchComponent implements OnInit {
   keywords: string | undefined;
   products: IProduct[] = [];
-
+  searchText: any;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService // Inject ProductService

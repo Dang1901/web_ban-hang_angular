@@ -25,6 +25,6 @@ export class ProductService {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
   searchProducts(keywords: string): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(`${this.baseUrl}/search`, { params: { keywords: keywords } });
+    return this.http.get<IProduct[]>(`${this.baseUrl}`, { params: { name_like: keywords } });
   }
 }

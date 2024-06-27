@@ -6,6 +6,7 @@ import { LayoutAdminComponent } from './components/layout-admin/layout-admin.com
 import { HomePageComponent } from './pages/client/home-page/home-page.component';
 import { DetailComponent } from './pages/client/detail/detail.component';
 import { SearchComponent } from './pages/client/search/search.component';
+import { CartComponent } from './pages/client/cart/cart.component';
 
 export const routes: Routes = [
     {
@@ -24,6 +25,11 @@ export const routes: Routes = [
             {
                 path: 'search',
                 component: SearchComponent
+            },
+            
+            {
+                path: 'cart',
+                component: CartComponent
             }
         ]
     },

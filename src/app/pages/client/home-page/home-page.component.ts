@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { IProduct } from '../../../interfaces/Product';
 import { ProductService } from '../../../services/product.service';
 
+
 @Component({
   selector: 'app-home-page',
   standalone: true,
@@ -12,6 +13,7 @@ import { ProductService } from '../../../services/product.service';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent implements OnInit {
+  searchText: any;
   products: IProduct[] | undefined;
   constructor(private productService: ProductService){}
   ngOnInit() {

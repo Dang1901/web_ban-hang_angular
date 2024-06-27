@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../../interfaces/Product';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-detail',
@@ -15,7 +16,9 @@ export class DetailComponent implements OnInit {
   product: IProduct | undefined;
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private router: Router,
+    private productService: ProductService,
+    private cartService: CartService
   ){}
   ngOnInit(): void {
       this.productId = this.route.snapshot.params['id'];
@@ -24,5 +27,12 @@ export class DetailComponent implements OnInit {
         this.product = p;
       });
       
+  }
+  buyNow(): void {
+    if (this.product) {
+      this.cartService.addToCart(this.product);
+      // Điều hướng đến trang giỏ hàng sau khi thêm sản phẩm vào giỏ hàng
+      this.router.navigate(['/cart']);
+    }
   }
 }
