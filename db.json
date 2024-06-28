@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "name": "Quần jean nữ 1",
+      "name": "Quần jean nữ 1 update",
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "quantity": 30,
       "price": 29.99,
@@ -84,6 +84,36 @@
       "username": "dang",
       "terms": "",
       "id": 3
+    },
+    {
+      "email": "dang1901@gmail.com",
+      "password": "$2a$10$klzwygzhaUhjIrcmXN72TOqIlk8lNzAhhtfFnwKpg/fSPUnYyI4X2",
+      "role": "client",
+      "id": 4
+    },
+    {
+      "email": "admin123@gmail.com",
+      "password": "$2a$10$DTqRfwkgqq97zR.hAA4DDehQQO094u4boPlNnMl0hwqDaAFAMZeD2",
+      "role": "client",
+      "id": 5
+    },
+    {
+      "email": "admin2@gmail.com",
+      "password": "$2a$10$1aVZLiqYjA1G06Laz4XTseiWUfRPuVUhOubxD22jOGJZ8dqk0S.zi",
+      "role": "client",
+      "id": 6
+    },
+    {
+      "email": "admin3@gmail.com",
+      "password": "$2a$10$psttPeg8yXm6MiK144Fqx.wqkg2BCsYRLJVfnDBAdfCCDP1CZrIwq",
+      "role": "client",
+      "id": 7
+    },
+    {
+      "email": "admin4@gmail.com",
+      "password": "$2a$10$yqIV27v4S4ilVHR5Rzs0Geg1rXcF9KzLOvSXoIdKW8Benf1E9XaPC",
+      "role": "client",
+      "id": 8
     }
   ]
 }

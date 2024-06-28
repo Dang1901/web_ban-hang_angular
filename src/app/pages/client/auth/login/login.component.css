@@ -18,11 +18,7 @@
         .form-label {
             color: #adb5bd;
         }
-        .form-control:focus {
-            color: white;
-            background-color: #1c1e21;
-            border-color: #6c757d;
-        }
+
         .form-control::placeholder {
             color: #adb5bd;
         }
