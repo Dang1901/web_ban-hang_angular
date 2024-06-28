@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
-import { IProduct } from '../../../interface/product';
 import { ProductService } from '../../../services/product.service';
+import { IProduct } from '../../../interfaces/Product';
 
 @Component({
   selector: 'app-product',
