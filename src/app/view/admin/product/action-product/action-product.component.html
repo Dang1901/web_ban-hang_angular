@@ -1,5 +1,7 @@
 <div class="d-flex align-items-center justify-content-between">
-  <h1 class="fs-4 fw-bold">Thêm sản phẩm</h1>
+  <h1 class="fs-4 fw-bold">
+    {{ isUpdate ? 'Cập nhật sản phẩm' : 'Thêm sản phẩm' }}
+  </h1>
   <a [routerLink]="['/admin/product']"
     class="btn btn-primary bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
     Quản lý sản phẩm
@@ -34,21 +36,24 @@
   </div>
   <div class="mb-4">
     <label for="image" class="form-label">Ảnh sản phẩm</label>
-    <input class="form-control" type="file" id="image" formControlName="image" />
+    <input class="form-control" type="file" id="image" (change)="onImageSelect($event)" />
+    <input type="text" formControlName="image" [(ngModel)]="product.image">
     <div class="text-danger" *ngIf="!productForm.get('image')?.valid && productForm.get('image')?.touched">
       {{ getErrorMessage("image") }}
     </div>
   </div>
-  <div *ngIf="product.image">
-    <img [src]="product.image" alt="Product Image" class="img-fluid">
+  <div *ngIf="product.image && !!isUpdate">
+    <img [src]="product.image" alt="Product Image" class="img-fluid" width="150px">
   </div>
   <div class="mb-4">
     <label for="desc" class="form-label">Mô tả sản phẩm</label>
-    <textarea class="form-control" id="desc" placeholder="Nhập mô tả" formControlName="desc"
-      [value]="product.desc"></textarea>
+    <textarea class="form-control" id="desc" placeholder="Nhập mô tả" formControlName="desc" [(ngModel)]="product.desc">
+    </textarea>
     <div class="text-danger" *ngIf="!productForm.get('desc')?.valid && productForm.get('desc')?.touched">
       {{ getErrorMessage("desc") }}
     </div>
   </div>
-  <div class="mt-6 d-flex w-100"> <button type="submit" class="btn btn-primary w-100"> Submit </button> </div>
+  <div class="mt-6 d-flex w-100">
+    <button type="submit" class="btn btn-primary w-100"> {{isUpdate?"Cập nhật":"Thêm mới"}} </button>
+  </div>
 </form>

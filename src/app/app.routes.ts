@@ -28,6 +28,10 @@ export const routes: Routes = [
         component: ActionProductComponent,
       },
       {
+        path: 'action-product/:id',
+        component: ActionProductComponent,
+      },
+      {
         path: 'create',
         component: CreateComponent,
       },

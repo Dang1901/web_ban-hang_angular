@@ -71,27 +71,36 @@
       "image": "C:\\fakepath\\myw3schoolsimage.jpg",
       "quantity": 1,
       "desc": "sdasd"
+    },
+    {
+      "id": "e4d0",
+      "name": "sasd",
+      "price": 1212122,
+      "discount": 12,
+      "image": "C:\\fakepath\\0016815_t8zE4f6Q2ELNabNTnnPoWR_1600.jpeg",
+      "quantity": 12,
+      "desc": "dfsdfsdf"
     }
   ],
   "users": [
     {
       "email": "phamhaidang190123@gmail.com",
       "password": "$2a$10$Kw44dFmr0mFIuVPtV9B6Gu04ts/z8.TK5J2aBFipuSdi0LZaoaVIm",
-      "id": 1
+      "id": "1"
     },
     {
       "email": "phamhaidang1901@gmail.com",
       "password": "$2a$10$liWPBegadN0H2HRGrXTDaufHGyZi61IfbNnl63nrNLRK0hFsbeMLe",
       "username": "dang",
       "terms": "",
-      "id": 2
+      "id": "2"
     },
     {
       "email": "dang123@gmail.com",
       "password": "$2a$10$yKiDbhsPIEuui3eoQMHOWeIJuX.Xc1r32f42rAs02Nm/iLtPps.j.",
       "username": "dang",
       "terms": "",
-      "id": 3
+      "id": "3"
     }
   ]
 }
