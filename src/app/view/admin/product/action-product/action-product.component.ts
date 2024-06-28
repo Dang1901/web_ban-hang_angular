@@ -10,8 +10,8 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { IProduct } from '../../../../interface/product';
 import { ProductService } from '../../../../services/product.service';
+import { IProduct } from '../../../../interfaces/Product';
 
 @Component({
   selector: 'app-action-product',
