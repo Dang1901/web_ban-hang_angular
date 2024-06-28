@@ -11,6 +11,10 @@ import { LoginComponent } from './pages/client/auth/login/login.component';
 import { RegisterComponent } from './pages/client/auth/register/register.component';
 import { ListProductsComponent } from './pages/admin/product/list-products/list-products.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { HomePageComponent } from './pages/client/home-page/home-page.component';
+import { DetailComponent } from './pages/client/detail/detail.component';
+import { SearchComponent } from './pages/client/search/search.component';
+import { CartComponent } from './pages/client/cart/cart.component';
 
 export const routes: Routes = [
   {
@@ -24,7 +28,27 @@ export const routes: Routes = [
   {
     path: '',
     component: LayoutClientComponent,
-  },
+    children: [
+        {
+            path: '',
+            component: HomePageComponent
+        },
+        {
+            path: 'detail/:id',
+            component: DetailComponent
+        },
+        
+        {
+            path: 'search',
+            component: SearchComponent
+        },
+        
+        {
+            path: 'cart',
+            component: CartComponent
+        }
+    ]
+},
   {
     path: 'admin',
     component: LayoutAdminComponent,
@@ -63,4 +87,5 @@ export const routes: Routes = [
       },
     ],
   },
-];
+]
+

@@ -1,10 +1,12 @@
+import { FooterComponent } from './../layouts/footer/footer.component';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { HeaderComponent } from '../layouts/header/header.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-layout-client',
   standalone: true,
-  imports: [RouterLink],
+  imports: [HeaderComponent, RouterModule, FooterComponent],
   templateUrl: './layout-client.component.html',
   styleUrl: './layout-client.component.css'
 })

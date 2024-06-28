@@ -1,10 +1,13 @@
 export interface IProduct{
     id?: string | number;
-    name: string;
-    image: string;
-    price: number;
-    quantity: number;
-    thumbnail: string;
-    discount:string
-    description: string;
+      name: string;
+      price: number;
+      quantity: number;
+      image: string;
+      desc: string;
+}
+
+export interface ICart{
+  id?: string | number;
+  product: IProduct;
 }

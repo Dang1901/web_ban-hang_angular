@@ -90,22 +90,22 @@
                 </div>
               </div>
               <div class="row">
-                <label class="form-label" for="description">Mô tả</label>
+                <label class="form-label" for="desc">Mô tả</label>
                 <textarea
                   class="form-control"
-                  id="description"
+                  id="desc"
                   rows="5"
                   placeholder="Nhập mô tả của bạn ở đây..."
-                  formControlName="description"
+                  formControlName="desc"
                 ></textarea>
                 <div
                   class="text-danger"
                   *ngIf="
-                    !productForm.get('description')?.valid &&
-                    productForm.get('description')?.touched
+                    !productForm.get('desc')?.valid &&
+                    productForm.get('desc')?.touched
                   "
                 >
-                  {{ getErrorMessage("description") }}
+                  {{ getErrorMessage("desc") }}
                 </div>
               </div>
 

@@ -1,15 +1,15 @@
-import { Component } from '@angular/core'; //import component 
-import { RouterLink, RouterOutlet, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms'; //import FormsModule
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,FormsModule],
+  imports: [RouterOutlet, RouterLink, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-
-//export class TenComponent
 export class AppComponent {
   title = 'Thaivm2';
   info = {

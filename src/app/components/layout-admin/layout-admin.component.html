@@ -34,7 +34,7 @@
             </div>
           </li>
           <li class="nav-item cursor-pointer hover-item" [class.active]="activeIndex === 1" (click)="toggleActive(1)">
-            <div class="nav-link text-white " routerLink="/admin/list_products">
+            <div class="nav-link text-white " routerLink="list_products">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-shopping-cart" aria-hidden="true">
@@ -63,7 +63,7 @@
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-surface-secondary">
-
+      
       <router-outlet></router-outlet>
     </main>
   </div>

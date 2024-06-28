@@ -25,7 +25,7 @@ export class ProductAddComponent {
       image: ['', Validators.required],
       quantity: ['', [Validators.required, Validators.min(1)]],
       price: ['', [Validators.required, Validators.min(1)]],
-      description: ['', [Validators.required, Validators.minLength(3)]],
+      desc: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
   ngOnInit(): void {}
