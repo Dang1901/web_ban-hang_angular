@@ -1,12 +1,12 @@
 {
   "products": [
     {
-      "id": "2",
-      "name": "Quần jean nữ",
-      "price": 29.99,
-      "quantity": 30,
+      "name": "Quần jean nữ 1",
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
-      "desc": "Quần jean nữ đẹp và phong cách, đi kèm với nhiều loại trang phục khác nhau."
+      "quantity": 30,
+      "price": 29.99,
+      "desc": "Quần jean nữ đẹp và phong cách, đi kèm với nhiều loại trang phục khác nhau.",
+      "id": "2"
     },
     {
       "id": "3",
