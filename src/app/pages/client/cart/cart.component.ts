@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../../interfaces/Product';
-import { CartService } from '../../../services/cart.service';
+import { CartService } from '../../../service/cart.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.css',
 })
 export class CartComponent implements OnInit {
   cartItems: IProduct[] = [];
@@ -27,8 +27,14 @@ export class CartComponent implements OnInit {
   }
 
   updateCartSummary(): void {
-    this.totalItems = this.cartItems.reduce((sum, item) => sum + item.quantity, 0);
-    this.subtotal = this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    this.totalItems = this.cartItems.reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    );
+    this.subtotal = this.cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
   }
 
   increaseQuantity(index: number): void {
