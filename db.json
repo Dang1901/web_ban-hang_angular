@@ -5,7 +5,6 @@
       "name": "Quần jean nữ",
       "price": 29.99,
       "quantity": 30,
-      "discount": 11,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Quần jean nữ đẹp và phong cách, đi kèm với nhiều loại trang phục khác nhau."
     },
@@ -14,17 +13,23 @@
       "name": "Giày thể thao unisex",
       "price": 39.99,
       "quantity": 20,
-      "discount": 11,
-      "image": "https://example.com/giay-the-thao-unisex.jpg",
+      "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Giày thể thao unisex vừa vặn và thoải mái, phù hợp cho mọi hoạt động thể chất."
+    },
+    {
+      "id": "4",
+      "name": "Túi xách nữ",
+      "price": 25.99,
+      "quantity": 40,
+      "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
+      "desc": "Túi xách nữ tiện dụng và thời trang, phù hợp cho mọi dịp từ đi làm đến dạo phố."
     },
     {
       "id": "5",
       "name": "Đồng hồ nam",
       "price": 79.99,
       "quantity": 15,
-      "discount": 11,
-      "image": "https://example.com/dong-ho-nam.jpg",
+      "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Đồng hồ nam sang trọng và lịch lãm, là điểm nhấn cho phong cách thời trang của bạn."
     },
     {
@@ -32,8 +37,7 @@
       "name": "Áo sơ mi nữ",
       "price": 19.99,
       "quantity": 35,
-      "discount": 11,
-      "image": "https://example.com/ao-so-mi-nu.jpg",
+      "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Áo sơ mi nữ thanh lịch và trẻ trung, phù hợp cho các buổi gặp gỡ công việc hoặc hẹn hò."
     },
     {
@@ -41,8 +45,7 @@
       "name": "Quần jogger nam",
       "price": 34.99,
       "quantity": 25,
-      "discount": 11,
-      "image": "https://example.com/quan-jogger-nam.jpg",
+      "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Quần jogger nam thoải mái và cá tính, phù hợp cho mọi hoạt động từ thể thao đến đi chơi."
     },
     {
@@ -50,8 +53,7 @@
       "name": "Áo khoác đông unisex",
       "price": 49.99,
       "quantity": 10,
-      "discount": 11,
-      "image": "https://example.com/ao-khoac-dong-unisex.jpg",
+      "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Áo khoác đông unisex ấm áp và thời trang, là lựa chọn hoàn hảo cho mùa đông."
     },
     {
@@ -59,9 +61,9 @@
       "name": "Balo học sinh",
       "price": 22.99,
       "quantity": 30,
-      "discount": 11,
-      "image": "https://example.com/balo-hoc-sinh.jpg",
+      "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Balo học sinh tiện dụng và nhẹ nhàng, giúp bạn mang theo mọi thứ một cách dễ dàng."
+<<<<<<< HEAD
     },
     {
       "id": "f4a3",
@@ -80,6 +82,8 @@
       "image": "C:\\fakepath\\0016815_t8zE4f6Q2ELNabNTnnPoWR_1600.jpeg",
       "quantity": 12,
       "desc": "dfsdfsdf"
+=======
+>>>>>>> c79c0973e2770f5386f92f7433b20a3023406cbc
     }
   ],
   "users": [
