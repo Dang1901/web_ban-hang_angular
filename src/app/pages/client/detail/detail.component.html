@@ -2,18 +2,18 @@
   <div class="row">
     <div class="col-md-6 p-4">
       <img
-        src="{{ product?.image }}"
+        src="{{ iProduct?.image }}"
         alt="Product Image"
         class="rounded-lg shadow-md img-fluid w-75"
       />
     </div>
     <div class="col-md-6 p-4">
-      <h2 class="display-5 font-weight-bold mb-2">{{ product?.name }}</h2>
-      <p class="h4 text-muted mb-2">${{ product?.price }}</p>
+      <h2 class="display-5 font-weight-bold mb-2">{{ iProduct?.name }}</h2>
+      <p class="h4 text-muted mb-2">${{ iProduct?.price }}</p>
       <p class="h5 text-muted mb-2">Discount: 12.96%</p>
-      <p class="h5 text-muted mb-2">Số lượng: {{ product?.quantity }}</p>
-      <h4 class="h5 text-muted mb-4">{{ product?.desc }}</h4>
-      <button class="btn btn-primary" (click)="buyNow()">Mua ngay</button>
+      <p class="h5 text-muted mb-2">Số lượng: {{ iProduct?.quantity }}</p>
+      <h4 class="h5 text-muted mb-4">{{ iProduct?.desc }}</h4>
+      <button class="btn btn-primary" (click)="addToCart()">Mua ngay</button>
     </div>
   </div>
 </div>

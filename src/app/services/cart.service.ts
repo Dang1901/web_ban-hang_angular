@@ -1,32 +1,27 @@
-// cart.service.ts
-
+// src/app/services/cart.service.ts
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { IProduct } from '../interfaces/Product';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ICart } from '../interfaces/Cart';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cart: IProduct[] = [];
+  private baseUrl = 'http://localhost:3000/cart'; 
+  private base = 'http://localhost:3000/cart?_expand=product';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  addToCart(product: IProduct): void {
-    const existingProduct = this.cart.find(item => item.id === product.id);
-    if (existingProduct) {
-      existingProduct.quantity += 1;
-    } else {
-      product.quantity = 1;
-      this.cart.push(product);
-    }
+  getItems(): Observable<ICart[]> {
+    return this.http.get<ICart[]>(this.base);
   }
 
-  getCartItems(): IProduct[] {
-    return this.cart;
+  addItem(product: number, quantity: number): Observable<ICart> {
+    return this.http.post<ICart>(this.baseUrl, { product, quantity });
   }
 
-  clearCart(): void {
-    this.cart = [];
+  removeItem(product: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${product}`);
   }
 }

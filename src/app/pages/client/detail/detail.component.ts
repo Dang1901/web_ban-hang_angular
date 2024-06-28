@@ -1,38 +1,45 @@
+// src/app/components/detail/detail.component.ts
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../../../interfaces/Product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
 import { CartService } from '../../../services/cart.service';
+import { IProduct } from '../../../interfaces/Product';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [],
   templateUrl: './detail.component.html',
-  styleUrl: './detail.component.css'
+  styleUrls: ['./detail.component.css'],
+  imports: [CommonModule, RouterModule]
 })
 export class DetailComponent implements OnInit {
-  productId: string | number | undefined;
-  product: IProduct | undefined;
+  product: number | undefined;
+  iProduct: IProduct | undefined;
+
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private productService: ProductService,
-    private cartService: CartService
-  ){}
+    private cartService: CartService,
+    private router: Router,
+  ) {}
+
   ngOnInit(): void {
-      this.productId = this.route.snapshot.params['id'];
-      console.log(this.productId);
-      this.productService.getProductById(this.productId).subscribe((p)=>{
-        this.product = p;
-      });
-      
-  }
-  buyNow(): void {
+    this.product = +this.route.snapshot.params['id']; // Ép kiểu sang number
     if (this.product) {
-      this.cartService.addToCart(this.product);
-      // Điều hướng đến trang giỏ hàng sau khi thêm sản phẩm vào giỏ hàng
-      this.router.navigate(['/cart']);
+      this.productService.getProductById(this.product).subscribe((p) => {
+        this.iProduct = p;
+      });
+    }
+  }
+
+  addToCart(): void {
+    if (this.product) {
+      this.cartService.addItem(this.product, 1).subscribe(() => {
+        alert('Sản phẩm đã được thêm vào giỏ hàng!');
+        this.router.navigate(['/cart']);
+      });
     }
   }
 }

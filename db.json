@@ -85,5 +85,17 @@
       "terms": "",
       "id": 3
     }
+  ],
+  "cart": [
+    {
+      "product": 2,
+      "quantity": 1,
+      "id": 1
+    },
+    {
+      "product": 2,
+      "quantity": 1,
+      "id": 2
+    }
   ]
 }

@@ -6,8 +6,3 @@ export interface IProduct{
       image: string;
       desc: string;
 }
-
-export interface ICart{
-  id?: string | number;
-  product: IProduct;
-}
