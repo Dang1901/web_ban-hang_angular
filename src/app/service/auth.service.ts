@@ -7,7 +7,7 @@ import { IUser } from '../interfaces/Auth';
   providedIn: 'root',
 })
 export class UserService {
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'http://localhost:3000/users';
   constructor(private http: HttpClient) {}
   login(user: IUser): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/login`, user);
