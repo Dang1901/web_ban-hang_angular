@@ -5,6 +5,7 @@ export interface IProduct{
       quantity: number;
       image: string;
       desc: string;
+      discount: number;
 }
 
 export interface ICart{
