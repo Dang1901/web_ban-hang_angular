@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { IUser } from '../../../../interfaces/Auth'; 
+import { IUser } from '../../../../interfaces/Auth';
 import {
   FormBuilder,
   FormGroup,
@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../../../service/auth.service';
 import { CommonModule } from '@angular/common';
+// import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,8 @@ export class LoginComponent {
     private userService: UserService,
     private router: Router,
     private fb: FormBuilder
-  ) {
+  ) // private cookieService: CookieService
+  {
     this.userForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -46,14 +48,15 @@ export class LoginComponent {
     return '';
   }
   handleSubmit() {
-    console.log(this.userForm.valid);
     if (this.userForm.valid) {
-      console.log(this.userForm.value);
       this.userService.login(this.userForm.value).subscribe({
         next: (data) => {
-          console.log('Register successfully!', data);
           localStorage.setItem('accessToken', data.accessToken);
           localStorage.setItem('role', data.user.role);
+          localStorage.setItem('user-info', JSON.stringify(data.user));
+          // this.cookieService.set('accessToken', data.accessToken);
+          // this.cookieService.set('role', data.user.role);
+          // this.cookieService.set('user-info', JSON.stringify(data.user));
           if (data.user.role === 'admin') {
             this.router.navigate(['/']);
           } else {
@@ -62,7 +65,6 @@ export class LoginComponent {
           alert('Đăng nhập thành công!');
         },
         error: (err) => {
-          console.error('Login failed', err);
           if (err.status === 400) {
             if (err.error === 'Cannot find user') {
               this.loginError = 'Email không tồn tại';
