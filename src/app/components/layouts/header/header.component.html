@@ -1,20 +1,10 @@
 <header class="bg-custom">
-  <div
-    class="container-fluid d-flex align-items-center justify-content-between px-4"
-    style="height: 100px"
-  >
+  <div class="container-fluid d-flex align-items-center justify-content-between px-4" style="height: 100px">
     <a class="text-teal-600" href="#">
-      <img
-        src="../../../assets/img/logo.png"
-        alt=""
-        class="rounded"
-        style="width: 80px"
-      />
+      <img src="../../../assets/img/logo.png" alt="" class="rounded" style="width: 80px" />
     </a>
 
-    <div
-      class="d-flex flex-grow-1 align-items-center justify-content-end justify-content-md-between"
-    >
+    <div class="d-flex flex-grow-1 align-items-center justify-content-end justify-content-md-between">
       <nav aria-label="Global" class="d-none d-md-block">
         <ul class="nav">
           <li class="nav-item">
@@ -38,26 +28,23 @@
         </ul>
       </nav>
 
-      <form
-        (ngSubmit)="onSearch()"
-        [formGroup]="searchForm"
-        class="d-none d-lg-inline-block w-50"
-      >
+      <form (ngSubmit)="onSearch()" [formGroup]="searchForm" class="d-none d-lg-inline-block w-25">
         <div class="input-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Tìm kiếm..."
-            formControlName="keywords"
-          />
+          <input type="text" class="form-control" placeholder="Tìm kiếm..." formControlName="keywords" />
           <button class="btn btn-primary" type="submit">Search</button>
         </div>
       </form>
 
-      <div class="d-flex align-items-center gap-2">
+      <div class="d-flex align-items-center gap-3" *ngIf="!isLogin">
         <div class="d-sm-flex gap-2">
-          <button class="btn btn-secondary" routerLink="login">Login</button>
-          <button class="btn btn-secondary" routerLink="register">Register</button>
+          <button class="button-common log" [routerLink]="['/login']">Đăng nhập </button>
+          <button class="button-common reg" routerLink="register">Đăng ký</button>
+        </div>
+      </div>
+      <div class="d-flex align-items-center gap-3" *ngIf="!!isLogin">
+        <div class="d-sm-flex gap-2 align-items-center">
+          <div class="text-white">Xin chào: {{extractUsername(userInfo.email)}}</div>
+          <button class="button-common " (click)="logout()">Đăng xuất</button>
         </div>
       </div>
     </div>

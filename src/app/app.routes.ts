@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 import { LayoutClientComponent } from './components/layout-client/layout-client.component';
 
 import { LayoutAdminComponent } from './components/layout-admin/layout-admin.component';
@@ -29,26 +28,26 @@ export const routes: Routes = [
     path: '',
     component: LayoutClientComponent,
     children: [
-        {
-            path: '',
-            component: HomePageComponent
-        },
-        {
-            path: 'detail/:id',
-            component: DetailComponent
-        },
-        
-        {
-            path: 'search',
-            component: SearchComponent
-        },
-        
-        {
-            path: 'cart',
-            component: CartComponent
-        }
-    ]
-},
+      {
+        path: '',
+        component: HomePageComponent,
+      },
+      {
+        path: 'detail/:id',
+        component: DetailComponent,
+      },
+
+      {
+        path: 'search',
+        component: SearchComponent,
+      },
+
+      {
+        path: 'cart',
+        component: CartComponent,
+      },
+    ],
+  },
   {
     path: 'admin',
     component: LayoutAdminComponent,
@@ -84,5 +83,4 @@ export const routes: Routes = [
       },
     ],
   },
-]
-
+];

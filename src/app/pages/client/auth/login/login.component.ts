@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { IUser } from '../../../../interfaces/Auth';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { UserService } from '../../../../service/auth.service';
 import { CommonModule } from '@angular/common';
 
@@ -10,24 +16,24 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterLink, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   user: IUser = {} as IUser;
   userForm: FormGroup = {} as FormGroup;
-  loginError: string | null = null; 
+  loginError: string | null = null;
   constructor(
     private userService: UserService,
     private router: Router,
     private fb: FormBuilder
   ) {
     this.userForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email ]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
   ngOnInit(): void {}
-  
+
   getErrorMessage(controlName: string): string {
     const control = this.userForm.get(controlName);
     if (control?.errors?.['required']) {
@@ -39,35 +45,33 @@ export class LoginComponent {
     }
     return '';
   }
-  handleSubmit(){
-    console.log(this.userForm.valid);
+  handleSubmit() {
     if (this.userForm.valid) {
-      console.log(this.userForm.value);
-      this.userService.login(this.userForm.value).subscribe({next: (data) =>{
-        console.log('Register successfully!', data);
-        localStorage.setItem('accessToken', data.accessToken);
-        localStorage.setItem('role', data.user.role);
-        if (data.user.role === 'admin') {
-          this.router.navigate(['/']); 
-        } else {
-        this.router.navigate(['/'])
-        }
-        alert("Đăng nhập thành công!")
-      },
-      error: (err) => {
-        console.error("Login failed", err);
-        if (err.status === 400) {
-          if (err.error === 'Cannot find user') {
-            this.loginError = 'Email không tồn tại';
-          } else if (err.error === 'Incorrect password') {
-            this.loginError = 'Mật khẩu không đúng';
+      this.userService.login(this.userForm.value).subscribe({
+        next: (data) => {
+          localStorage.setItem('accessToken', data.accessToken);
+          localStorage.setItem('role', data.user.role);
+          localStorage.setItem('user-info', JSON.stringify(data.user));
+          if (data.user.role === 'admin') {
+            this.router.navigate(['/']);
           } else {
-            this.loginError = 'Email hoặc mật khẩu không đúng';
+            this.router.navigate(['/']);
           }
-        } else {
-          this.loginError = 'Đăng nhập thất bại. Vui lòng thử lại sau.';
-        }
-      }
+          alert('Đăng nhập thành công!');
+        },
+        error: (err) => {
+          if (err.status === 400) {
+            if (err.error === 'Cannot find user') {
+              this.loginError = 'Email không tồn tại';
+            } else if (err.error === 'Incorrect password') {
+              this.loginError = 'Mật khẩu không đúng';
+            } else {
+              this.loginError = 'Email hoặc mật khẩu không đúng';
+            }
+          } else {
+            this.loginError = 'Đăng nhập thất bại. Vui lòng thử lại sau.';
+          }
+        },
       });
     }
   }
