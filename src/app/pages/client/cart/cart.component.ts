@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICart } from '../../../interfaces/Cart';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../service/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +16,9 @@ export class CartComponent implements OnInit {
   totalItems: number = 0;
   subtotal: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadCartItems();
@@ -62,12 +65,7 @@ export class CartComponent implements OnInit {
     }
   }
 
-  clearCart(): void {
-    this.cartService.clearCart().subscribe(() => {
-      this.items = [];
-      this.updateCartSummary();
-    });
-  }
+  
 
   getTotalCost(): number {
     return this.items.reduce(
@@ -75,7 +73,13 @@ export class CartComponent implements OnInit {
       0
     );
   }
-  cart(): void {
-    alert('Bạn cần mở pro để thêm chức năng!');
+  clearCart(): void {
+   if (confirm('Bạn có muốn thanh toán không!')) {
+     this.cartService.clearCart().subscribe(() => {
+      this.items = [];
+      alert("Thanh toán thành công!")
+      this.router.navigate(['/']);
+    });
+   }
   }
 }

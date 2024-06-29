@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { IProduct } from '../../../interfaces/Product';
 import { ProductService } from '../../../service/product.service';
 import { BannerComponent } from '../../../components/layouts/banner/banner.component';
+import { CartService } from '../../../service/cart.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,13 +14,27 @@ import { BannerComponent } from '../../../components/layouts/banner/banner.compo
   imports: [CommonModule, RouterModule, BannerComponent],
 })
 export class HomePageComponent implements OnInit {
-  searchText: any;
   products: IProduct[] | undefined;
-  constructor(private productService: ProductService) {}
+
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private router: Router
+  ) {}
   ngOnInit() {
     this.productService.getProducts().subscribe((products) => {
       this.products = products;
     });
+  }
+  addToCart(id: any) {
+    if (id) {
+      this.cartService.addItem(id, 1).subscribe(() => {
+        alert('Sản phẩm đã được thêm vào giỏ hàng!');
+        if (confirm('Bạn có muốn thanh toán luôn không!')) {
+          this.router.navigate(['/cart']);
+        }
+      });
+    }
   }
   formatCurrency(amount: number): string {
     const formatter = new Intl.NumberFormat('vi-VN', {

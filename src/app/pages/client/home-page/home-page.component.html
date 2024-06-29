@@ -12,6 +12,9 @@
             Chỉ còn {{ formatCurrency(product.price) }}
             <span class="text-decoration-line-through text-muted">{{ formatCurrency(product.discount) }}</span>
           </p>
+          <button class="btn btn-outline-primary" (click)="addToCart(product.id)">
+            Thêm
+          </button>
         </div>
       </a>
     </div>

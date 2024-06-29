@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ProductService } from '../../../service/product.service';
 import { CommonModule } from '@angular/common';
-import { IUser } from '../../../interfaces/Auth'; 
+import { IUser } from '../../../interfaces/Auth';
 import { UserInfoService } from '../../../service/user.service';
 
 @Component({
@@ -10,11 +10,11 @@ import { UserInfoService } from '../../../service/user.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
   users: IUser[] | undefined;
-  constructor(private userService:UserInfoService ){}
+  constructor(private userService: UserInfoService) {}
   loadProducts() {
     this.userService.getUsers().subscribe((users) => {
       this.users = users;

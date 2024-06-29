@@ -61,7 +61,12 @@
               Giá tiền: <span class="fw-bold">${{ getTotalCost() }}</span>
             </li>
           </ul>
-          <button class="btn btn-primary btn-lg mt-3 w-100" (click)="cart()">Thanh toán</button>
+          <button
+            class="btn btn-primary btn-lg mt-3 w-100"
+            (click)="clearCart()"
+          >
+            Thanh toán
+          </button>
         </div>
       </div>
     </div>
