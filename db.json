@@ -88,17 +88,14 @@
   ],
   "cart": [
     {
-      "productId": 4,
-      "quantity": 2,
-      "id": 1,
-      "product": {
-        "id": 4,
-        "name": "Túi xách nữ",
-        "price": 25.99,
-        "quantity": 40,
-        "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
-        "desc": "Túi xách nữ tiện dụng và thời trang, phù hợp cho mọi dịp từ đi làm đến dạo phố."
-      }
+      "productId": 2,
+      "quantity": 1,
+      "id": 7
+    },
+    {
+      "productId": 3,
+      "quantity": 1,
+      "id": 8
     }
   ]
 }
