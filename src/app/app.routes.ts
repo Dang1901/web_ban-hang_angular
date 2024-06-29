@@ -17,6 +17,7 @@ import { CartComponent } from './pages/client/cart/cart.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 
+
 export const routes: Routes = [
   {
     path: 'login',
@@ -80,10 +81,7 @@ export const routes: Routes = [
         path: 'edit_product/:id',
         component: ProductEditComponent,
       },
-      {
-        path: 'edit_product/:id',
-        component: ProductEditComponent,
-      },
+  
     ],
   },
 ];

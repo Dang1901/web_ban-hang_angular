@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormGroup,
   FormsModule,
@@ -23,24 +24,41 @@ import { CookieService } from 'ngx-cookie-service';
     CommonModule,
   ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   user: IUser = {} as IUser;
   userForm: FormGroup = {} as FormGroup;
   loginError: string | null = null;
+
   constructor(
     private userService: UserService,
     private router: Router,
     private fb: FormBuilder,
     private cookieService: CookieService
   ) {
-    this.userForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      role: ['client'],
-    });
+    this.userForm = this.fb.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+        role: ['client'],
+      },
+      { validators: this.matchPassword }
+    );
   }
+  matchPassword(group: FormGroup): { [key: string]: boolean } | null {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+
+    if (password !== confirmPassword) {
+      group.get('confirmPassword')?.setErrors({ passwordMismatch: true });
+      return { passwordMismatch: true };
+    }
+
+    return null;
+  }
+
   ngOnInit(): void {}
 
   getErrorMessage(controlName: string): string {

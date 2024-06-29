@@ -26,6 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
+[x: string]: any;
   isLogin: boolean = false;
   userInfo: any = {} as any;
   searchForm = new FormGroup({

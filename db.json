@@ -74,31 +74,20 @@
     }
 
   ],
+
+  
   "users": [
     {
-      "email": "phamhaidang190123@gmail.com",
-      "password": "$2a$10$Kw44dFmr0mFIuVPtV9B6Gu04ts/z8.TK5J2aBFipuSdi0LZaoaVIm",
-      "id": "1"
-    },
-    {
-      "email": "phamhaidang1901@gmail.com",
-      "password": "$2a$10$liWPBegadN0H2HRGrXTDaufHGyZi61IfbNnl63nrNLRK0hFsbeMLe",
-      "username": "dang",
-      "terms": "",
-      "id": "2"
-    },
-    {
-      "email": "dang123@gmail.com",
-      "password": "$2a$10$yKiDbhsPIEuui3eoQMHOWeIJuX.Xc1r32f42rAs02Nm/iLtPps.j.",
-      "username": "dang",
-      "terms": "",
-      "id": 3
-    },
-    {
-      "email": "dang1901@gmail.com",
+      "email": "admin@gmail.com",
       "password": "$2a$10$klzwygzhaUhjIrcmXN72TOqIlk8lNzAhhtfFnwKpg/fSPUnYyI4X2",
       "role": "admin",
       "id": 4
+    },
+    {
+      "email": "admin1@gmail.com",
+      "password": "$2a$10$klzwygzhaUhjIrcmXN72TOqIlk8lNzAhhtfFnwKpg/fSPUnYyI4X2",
+      "role": "admin",
+      "id": 12
     },
     {
       "email": "admin123@gmail.com",
@@ -107,22 +96,11 @@
       "id": 5
     },
     {
-      "email": "admin2@gmail.com",
-      "password": "$2a$10$1aVZLiqYjA1G06Laz4XTseiWUfRPuVUhOubxD22jOGJZ8dqk0S.zi",
+      "email": "phamhaidang190123@gmail.com",
+      "password": "$2a$10$sh4zLDO4NFO5hdvGAbpE4O4gYu53FneGzIJlqXeae3CyiZMmypHo6",
+      "confirmPassword": "123456",
       "role": "client",
-      "id": 6
-    },
-    {
-      "email": "admin3@gmail.com",
-      "password": "$2a$10$psttPeg8yXm6MiK144Fqx.wqkg2BCsYRLJVfnDBAdfCCDP1CZrIwq",
-      "role": "client",
-      "id": 7
-    },
-    {
-      "email": "admin4@gmail.com",
-      "password": "$2a$10$yqIV27v4S4ilVHR5Rzs0Geg1rXcF9KzLOvSXoIdKW8Benf1E9XaPC",
-      "role": "client",
-      "id": 8
+      "id": 14
     }
   ],
   "cart": [
