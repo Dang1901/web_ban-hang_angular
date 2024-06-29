@@ -98,13 +98,6 @@
       "confirmPassword": "123456",
       "role": "client",
       "id": 14
-    },
-    {
-      "email": "abc@gmail.com",
-      "password": "$2a$10$YMVFum3lbS4CBN8Xew6KcOR9J17IgVabgMmQ3zGyokriBX5Dg.fAi",
-      "confirmPassword": "123456",
-      "role": "client",
-      "id": 15
     }
   ],
   "cart": [
@@ -122,6 +115,26 @@
       "productId": 8,
       "quantity": 1,
       "id": 3
+    },
+    {
+      "productId": 3,
+      "quantity": 1,
+      "id": 4
+    },
+    {
+      "productId": 4,
+      "quantity": 1,
+      "id": 5
+    },
+    {
+      "productId": 3,
+      "quantity": 1,
+      "id": 6
+    },
+    {
+      "productId": 4,
+      "quantity": 1,
+      "id": 7
     }
   ]
 }
