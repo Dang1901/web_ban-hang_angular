@@ -25,6 +25,7 @@ import { CartService } from '../../../service/cart.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
+[x: string]: any;
   isLogin: boolean = false;
   userInfo: IUser = {} as IUser;
   searchForm = new FormGroup({
