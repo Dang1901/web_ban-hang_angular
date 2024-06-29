@@ -1,3 +1,4 @@
+<app-banner></app-banner>
 <div class="container py-5">
   <p class="text-center font-bold title  fw-medium mb-4">Danh sách sản phẩm</p>
   <div class="row g-3">
@@ -11,6 +12,9 @@
             Chỉ còn {{ formatCurrency(product.price) }}
             <span class="text-decoration-line-through text-muted">{{ formatCurrency(product.discount) }}</span>
           </p>
+          <button class="btn btn-outline-primary" (click)="addToCart(product.id)">
+            Thêm
+          </button>
         </div>
       </a>
     </div>

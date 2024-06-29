@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, tap } from 'rxjs';
+import { Observable, Subject, forkJoin, map, switchMap, tap } from 'rxjs';
 import { ICart } from '../interfaces/Cart';
 
 @Injectable({
@@ -35,10 +35,22 @@ export class CartService {
     return this.http.put<ICart>(url, item);
   }
 
-  clearCart(): Observable<void> {
-    return this.http.delete<void>(this.baseUrl);
-  }
   getCartUpdated(): Observable<void> {
     return this.cartUpdated.asObservable();
   }
+  clearCart(): Observable<void> {
+  return this.getItems().pipe(
+    switchMap((items) => {
+      const deleteRequests = items.map(item => this.http.delete<void>(`${this.baseUrl}/${item.id}`));
+      return forkJoin(deleteRequests).pipe(
+        tap(() => {
+          this.cartUpdated.next();
+          this.cartUpdated.complete();
+        }),
+        map(() => void 0) // Chuyển đổi kết quả thành `void`
+      );
+    })
+  );
+}
+
 }
