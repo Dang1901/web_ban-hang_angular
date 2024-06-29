@@ -12,8 +12,6 @@ export class AuthGuard implements CanActivate {
     const url = state.url;
 
     if (this.authService.isAdmin()) {
-      console.log('cxgsdfgg');
-
       if (url === '/admin') {
         return true;
       } else {

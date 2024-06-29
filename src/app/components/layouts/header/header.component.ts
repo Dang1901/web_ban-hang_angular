@@ -49,7 +49,6 @@ export class HeaderComponent implements OnInit {
       this.isLogin = false;
     }
     this.userInfo = this.getUserInfoFromCookie();
-    console.log(this.userInfo);
   }
   loadCartItems(): void {
     this.cartService.getItems().subscribe((items) => {
@@ -102,8 +101,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/cart']);
   }
   handleDashboard() {
-    console.log(this.userService.isAdmin());
-
     this.router.navigate(['/admin']);
   }
 }
