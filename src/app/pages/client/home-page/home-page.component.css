@@ -4,7 +4,7 @@
 
 .card-parent .position-absolute {
   top: 0;
-  right: 0;
+  right: 9px;
   background-color: #d80000;
   color: #fff;
   font-size: 0.8rem;
