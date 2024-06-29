@@ -46,9 +46,8 @@ export class LoginComponent {
     return '';
   }
   handleSubmit() {
-    console.log(this.userForm);
-
     if (this.userForm.valid) {
+      console.log(this.userForm.value);
       this.userService.login(this.userForm.value).subscribe({
         next: (data) => {
           console.log('Register successfully!', data);
