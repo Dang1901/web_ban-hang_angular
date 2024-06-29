@@ -16,6 +16,7 @@ import { DetailComponent } from './pages/client/detail/detail.component';
 import { SearchComponent } from './pages/client/search/search.component';
 import { CartComponent } from './pages/client/cart/cart.component';
 
+
 export const routes: Routes = [
   {
     path: 'login',
@@ -78,10 +79,7 @@ export const routes: Routes = [
         path: 'edit_product/:id',
         component: ProductEditComponent,
       },
-      {
-        path: 'edit_product/:id',
-        component: ProductEditComponent,
-      },
+  
     ],
   },
 ]

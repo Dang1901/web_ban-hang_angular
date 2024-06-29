@@ -11,6 +11,7 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
+[x: string]: any;
   searchForm = new FormGroup({
     keywords : new FormControl('')
   });
