@@ -49,9 +49,9 @@ export class LoginComponent {
     if (this.userForm.valid) {
       this.userService.login(this.userForm.value).subscribe({
         next: (data) => {
-          localStorage.setItem('accessToken', data);
+          localStorage.setItem('accessToken', data.accessToken);
           localStorage.setItem('role', data.user.role);
-          localStorage.setItem('user-info', data);
+          localStorage.setItem('user-info', JSON.stringify(data.user));
           if (data.user.role === 'admin') {
             this.router.navigate(['/']);
           } else {

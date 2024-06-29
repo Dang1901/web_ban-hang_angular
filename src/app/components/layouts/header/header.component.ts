@@ -25,7 +25,7 @@ import { UserService } from '../../../service/auth.service';
 })
 export class HeaderComponent implements OnInit {
   isLogin: boolean = false;
-  userInfo: any = {};
+  userInfo: IUser = {} as IUser;
   searchForm = new FormGroup({
     keywords: new FormControl(''),
   });
@@ -33,10 +33,14 @@ export class HeaderComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) {}
   ngOnInit(): void {
     this.isLogin = localStorage.getItem('accessToken') ? true : false;
-    // this.userInfo = localStorage.getItem('user-info');
-    // console.log(this.userInfo);
-    this.userInfo = this.userService.getCurrentUser();
-    console.log(this.userInfo, this.isLogin);
+    this.userInfo = this.getUserInfoFromLocalStorage();
+  }
+  getUserInfoFromLocalStorage() {
+    const userInfoString = localStorage.getItem('user-info');
+    if (userInfoString) {
+      return JSON.parse(userInfoString);
+    }
+    return null;
   }
   onSearch() {
     const keywords = this.searchForm.controls.keywords.value;
