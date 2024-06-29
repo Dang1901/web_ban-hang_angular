@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IProduct } from '../../../interfaces/Product';
 import { ProductService } from '../../../service/product.service';
+import { BannerComponent } from '../../../components/layouts/banner/banner.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule, RouterModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
+  imports: [CommonModule, RouterModule, BannerComponent],
 })
 export class HomePageComponent implements OnInit {
   searchText: any;
