@@ -47,12 +47,11 @@ export class LoginComponent {
   }
   handleSubmit() {
     if (this.userForm.valid) {
-      console.log(this.userForm.value);
       this.userService.login(this.userForm.value).subscribe({
         next: (data) => {
-          console.log('Register successfully!', data);
-          localStorage.setItem('accessToken', data.accessToken);
+          localStorage.setItem('accessToken', data);
           localStorage.setItem('role', data.user.role);
+          localStorage.setItem('user-info', data);
           if (data.user.role === 'admin') {
             this.router.navigate(['/']);
           } else {
@@ -61,7 +60,6 @@ export class LoginComponent {
           alert('Đăng nhập thành công!');
         },
         error: (err) => {
-          console.error('Login failed', err);
           if (err.status === 400) {
             if (err.error === 'Cannot find user') {
               this.loginError = 'Email không tồn tại';

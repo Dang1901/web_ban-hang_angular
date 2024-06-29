@@ -7,6 +7,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { Router, RouterLink, RouterModule } from '@angular/router';
+import { IUser } from '../../../interfaces/Auth';
+import { UserService } from '../../../service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -22,15 +24,40 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
+  isLogin: boolean = false;
+  userInfo: any = {};
   searchForm = new FormGroup({
     keywords: new FormControl(''),
   });
-  router = new Router();
-  ngOnInit(): void {}
+
+  constructor(private userService: UserService, private router: Router) {}
+  ngOnInit(): void {
+    this.isLogin = localStorage.getItem('accessToken') ? true : false;
+    // this.userInfo = localStorage.getItem('user-info');
+    // console.log(this.userInfo);
+    this.userInfo = this.userService.getCurrentUser();
+    console.log(this.userInfo, this.isLogin);
+  }
   onSearch() {
     const keywords = this.searchForm.controls.keywords.value;
     this.router.navigate(['search'], {
       queryParams: { keywords: keywords },
     });
+  }
+  extractUsername(value: string) {
+    const regex = /^(\w+)@/;
+    const match = value.match(regex);
+    if (match) {
+      return match[1];
+    } else {
+      return null;
+    }
+  }
+  logout() {
+    console.log('asdas');
+
+    this.userService.setCurrentUser(null);
+    localStorage.clear(); // Xóa tất cả dữ liệu trong LocalStorage
+    this.router.navigate(['/login']); // Chuyển hướng đến trang đăng nhập
   }
 }

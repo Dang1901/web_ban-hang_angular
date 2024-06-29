@@ -14,8 +14,6 @@ import { HomePageComponent } from './pages/client/home-page/home-page.component'
 import { DetailComponent } from './pages/client/detail/detail.component';
 import { SearchComponent } from './pages/client/search/search.component';
 import { CartComponent } from './pages/client/cart/cart.component';
-import { ProductComponent } from './view/admin/product/product.component';
-import { ActionProductComponent } from './view/admin/product/action-product/action-product.component';
 
 export const routes: Routes = [
   {
@@ -82,18 +80,6 @@ export const routes: Routes = [
       {
         path: 'edit_product/:id',
         component: ProductEditComponent,
-      },
-      {
-        path: 'product',
-        component: ProductComponent,
-      },
-      {
-        path: 'action-product',
-        component: ActionProductComponent,
-      },
-      {
-        path: 'action-product/:id',
-        component: ActionProductComponent,
       },
     ],
   },

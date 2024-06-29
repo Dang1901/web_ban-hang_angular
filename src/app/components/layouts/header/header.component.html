@@ -35,10 +35,16 @@
         </div>
       </form>
 
-      <div class="d-flex align-items-center gap-2">
+      <div class="d-flex align-items-center gap-2" *ngIf="!isLogin">
         <div class="d-sm-flex gap-2">
           <button class="btn btn-secondary" [routerLink]="['/login']">Login</button>
           <button class="btn btn-secondary" routerLink="register">Register</button>
+        </div>
+      </div>
+      <div class="d-flex align-items-center gap-2" *ngIf="!!isLogin">
+        <div class="d-sm-flex gap-2">
+          <button class="btn btn-secondary" (onclick)="logout()">Đăng xuất</button>
+          <!-- <div>{{extractUsername()}}</div> -->
         </div>
       </div>
     </div>

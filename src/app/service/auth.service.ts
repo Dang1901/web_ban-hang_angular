@@ -7,6 +7,7 @@ import { IUser } from '../interfaces/Auth';
   providedIn: 'root',
 })
 export class UserService {
+  private currentUser: any;
   private baseUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) {}
   login(user: IUser): Observable<any> {
@@ -14,5 +15,13 @@ export class UserService {
   }
   register(user: IUser): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/register`, user);
+  }
+
+  setCurrentUser(user: any) {
+    this.currentUser = user;
+  }
+
+  getCurrentUser() {
+    return this.currentUser;
   }
 }
