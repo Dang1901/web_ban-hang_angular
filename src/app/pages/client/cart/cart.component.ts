@@ -16,9 +16,7 @@ export class CartComponent implements OnInit {
   totalItems: number = 0;
   subtotal: number = 0;
 
-  constructor(private cartService: CartService,
-    private router: Router
-  ) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadCartItems();
@@ -58,14 +56,12 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(id: number | undefined): void {
-    if (id !== undefined) {
+    if (id !== undefined && confirm('Bạn chắc chắn sản phẩm này không!')) {
       this.cartService.removeItem(id).subscribe(() => {
         this.items = this.items.filter((item) => item.id !== id);
       });
     }
   }
-
-  
 
   getTotalCost(): number {
     return this.items.reduce(
@@ -74,12 +70,12 @@ export class CartComponent implements OnInit {
     );
   }
   clearCart(): void {
-   if (confirm('Bạn có muốn thanh toán không!')) {
-     this.cartService.clearCart().subscribe(() => {
-      this.items = [];
-      alert("Thanh toán thành công!")
-      this.router.navigate(['/']);
-    });
-   }
+    if (confirm('Bạn có muốn thanh toán không!')) {
+      this.cartService.clearCart().subscribe(() => {
+        this.items = [];
+        alert('Thanh toán thành công!');
+        this.router.navigate(['/']);
+      });
+    }
   }
 }
