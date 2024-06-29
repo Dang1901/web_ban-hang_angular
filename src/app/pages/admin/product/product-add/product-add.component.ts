@@ -29,7 +29,7 @@ export class ProductAddComponent {
     });
   }
   ngOnInit(): void {}
-  
+
   getErrorMessage(controlName: string): string {
     const control = this.productForm.get(controlName);
     if (control?.errors?.['required']) {
@@ -46,7 +46,6 @@ export class ProductAddComponent {
       this.productService
         .createProduct(this.productForm.value)
         .subscribe((data) => {
-          console.log("Create product successfully!", data);
           alert('Thêm thành công!');
           this.router.navigate(['/admin/list_products']);
         });

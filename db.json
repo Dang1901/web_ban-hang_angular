@@ -4,110 +4,87 @@
       "name": "Quần jean nữ 1 update",
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "quantity": 30,
-      "price": 29.99,
+      "price": 299999,
+      "discount": 12000,
       "desc": "Quần jean nữ đẹp và phong cách, đi kèm với nhiều loại trang phục khác nhau.",
       "id": 2
     },
     {
       "id": 3,
       "name": "Giày thể thao unisex",
-      "price": 39.99,
+      "price": 399999,
       "quantity": 20,
+      "discount": 12000,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Giày thể thao unisex vừa vặn và thoải mái, phù hợp cho mọi hoạt động thể chất."
     },
     {
       "id": 4,
       "name": "Túi xách nữ",
-      "price": 25.99,
+      "price": 259999,
       "quantity": 40,
+      "discount": 1200,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Túi xách nữ tiện dụng và thời trang, phù hợp cho mọi dịp từ đi làm đến dạo phố."
     },
     {
       "id": 5,
       "name": "Đồng hồ nam",
-      "price": 79.99,
+      "price": 799999,
       "quantity": 15,
+      "discount": 1200,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Đồng hồ nam sang trọng và lịch lãm, là điểm nhấn cho phong cách thời trang của bạn."
     },
     {
       "id": 6,
       "name": "Áo sơ mi nữ",
-      "price": 19.99,
+      "price": 199999,
       "quantity": 35,
+      "discount": 1200,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Áo sơ mi nữ thanh lịch và trẻ trung, phù hợp cho các buổi gặp gỡ công việc hoặc hẹn hò."
     },
     {
       "id": 7,
       "name": "Quần jogger nam",
-      "price": 34.99,
+      "price": 349999,
       "quantity": 25,
+      "discount": 15000,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Quần jogger nam thoải mái và cá tính, phù hợp cho mọi hoạt động từ thể thao đến đi chơi."
     },
     {
       "id": 8,
       "name": "Áo khoác đông unisex",
-      "price": 49.99,
+      "price": 497799,
       "quantity": 10,
+      "discount": 1000,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Áo khoác đông unisex ấm áp và thời trang, là lựa chọn hoàn hảo cho mùa đông."
     },
     {
       "id": 9,
       "name": "Balo học sinh",
-      "price": 22.99,
-      "quantity": 30,
+      "price": 227799,
+      "quantity": 3000,
+      "discount": 20,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Balo học sinh tiện dụng và nhẹ nhàng, giúp bạn mang theo mọi thứ một cách dễ dàng."
-    },
-    {
-      "id": "f4a3",
-      "name": "Ảnh đẹp update",
-      "price": 12312,
-      "discount": 12,
-      "image": "C:\\fakepath\\myw3schoolsimage.jpg",
-      "quantity": 1,
-      "desc": "sdasd"
-    },
-    {
-      "id": "e4d0",
-      "name": "sasd",
-      "price": 121000,
-      "discount": 12,
-      "image": "https://i.imgur.com/MyHrRPn.jpeg",
-      "quantity": 12,
-      "desc": "dfsdfsdf"
     }
   ],
   "users": [
     {
-      "email": "phamhaidang190123@gmail.com",
-      "password": "$2a$10$Kw44dFmr0mFIuVPtV9B6Gu04ts/z8.TK5J2aBFipuSdi0LZaoaVIm",
-      "id": "1"
-    },
-    {
-      "email": "phamhaidang1901@gmail.com",
-      "password": "$2a$10$liWPBegadN0H2HRGrXTDaufHGyZi61IfbNnl63nrNLRK0hFsbeMLe",
-      "username": "dang",
-      "terms": "",
-      "id": "2"
-    },
-    {
-      "email": "dang123@gmail.com",
-      "password": "$2a$10$yKiDbhsPIEuui3eoQMHOWeIJuX.Xc1r32f42rAs02Nm/iLtPps.j.",
-      "username": "dang",
-      "terms": "",
-      "id": 3
-    },
-    {
-      "email": "dang1901@gmail.com",
+      "email": "admin@gmail.com",
       "password": "$2a$10$klzwygzhaUhjIrcmXN72TOqIlk8lNzAhhtfFnwKpg/fSPUnYyI4X2",
-      "role": "client",
+      "role": "admin",
       "id": 4
+    },
+    {
+      "email": "admin1@gmail.com",
+      "password": "$2a$10$klzwygzhaUhjIrcmXN72TOqIlk8lNzAhhtfFnwKpg/fSPUnYyI4X2",
+      "role": "admin",
+      "id": 12
     },
     {
       "email": "admin123@gmail.com",
@@ -116,22 +93,18 @@
       "id": 5
     },
     {
-      "email": "admin2@gmail.com",
-      "password": "$2a$10$1aVZLiqYjA1G06Laz4XTseiWUfRPuVUhOubxD22jOGJZ8dqk0S.zi",
+      "email": "phamhaidang190123@gmail.com",
+      "password": "$2a$10$sh4zLDO4NFO5hdvGAbpE4O4gYu53FneGzIJlqXeae3CyiZMmypHo6",
+      "confirmPassword": "123456",
       "role": "client",
-      "id": 6
+      "id": 14
     },
     {
-      "email": "admin3@gmail.com",
-      "password": "$2a$10$psttPeg8yXm6MiK144Fqx.wqkg2BCsYRLJVfnDBAdfCCDP1CZrIwq",
+      "email": "abc@gmail.com",
+      "password": "$2a$10$YMVFum3lbS4CBN8Xew6KcOR9J17IgVabgMmQ3zGyokriBX5Dg.fAi",
+      "confirmPassword": "123456",
       "role": "client",
-      "id": 7
-    },
-    {
-      "email": "admin4@gmail.com",
-      "password": "$2a$10$yqIV27v4S4ilVHR5Rzs0Geg1rXcF9KzLOvSXoIdKW8Benf1E9XaPC",
-      "role": "client",
-      "id": 8
+      "id": 15
     }
   ],
   "cart": [
@@ -144,6 +117,11 @@
       "productId": 3,
       "quantity": 1,
       "id": 2
+    },
+    {
+      "productId": 8,
+      "quantity": 1,
+      "id": 3
     }
   ]
 }

@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../../../service/auth.service';
 import { CommonModule } from '@angular/common';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent {
   constructor(
     private userService: UserService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cookieService: CookieService
   ) {
     this.userForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -49,9 +51,12 @@ export class LoginComponent {
     if (this.userForm.valid) {
       this.userService.login(this.userForm.value).subscribe({
         next: (data) => {
-          localStorage.setItem('accessToken', data.accessToken);
-          localStorage.setItem('role', data.user.role);
-          localStorage.setItem('user-info', JSON.stringify(data.user));
+          // localStorage.setItem('accessToken', data.accessToken);
+          // localStorage.setItem('role', data.user.role);
+          // localStorage.setItem('user-info', JSON.stringify(data.user));
+          this.cookieService.set('accessToken', data.accessToken);
+          this.cookieService.set('role', data.user.role);
+          this.cookieService.set('user-info', JSON.stringify(data.user));
           if (data.user.role === 'admin') {
             this.router.navigate(['/']);
           } else {
