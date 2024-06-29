@@ -51,7 +51,6 @@ export class ProductEditComponent {
       this.productService
         .updateProduct(this.productId, this.productForm.value)
         .subscribe((data) => {
-          console.log('Cập nhập thành công!', data);
           alert('Cập nhập thành công!');
           this.router.navigate(['/admin/list_products']);
         });

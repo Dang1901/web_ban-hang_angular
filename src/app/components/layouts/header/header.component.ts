@@ -47,7 +47,6 @@ export class HeaderComponent implements OnInit {
       this.isLogin = false;
     }
     this.userInfo = this.getUserInfoFromLocalStorage();
-    console.log(this.isLogin);
   }
   loadCartItems(): void {
     this.cartService.getItems().subscribe((items) => {
