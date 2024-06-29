@@ -19,7 +19,6 @@ export class HomePageComponent implements OnInit {
     this.productService.getProducts().subscribe((products) => {
       this.products = products;
     });
-    console.log(this.formatCurrency(299999)); // Output: 299,999.00 VND
   }
   formatCurrency(amount: number): string {
     const formatter = new Intl.NumberFormat('vi-VN', {

@@ -9,8 +9,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink, RouterModule } from '@angular/router';
-import { IUser } from '../../../../interfaces/Auth'; 
+import { IUser } from '../../../../interfaces/Auth';
 import { UserService } from '../../../../service/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-register',
@@ -33,7 +34,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cookieService: CookieService
   ) {
     this.userForm = this.fb.group(
       {
@@ -70,12 +72,12 @@ export class RegisterComponent implements OnInit {
     }
     return '';
   }
-
   handleSubmit() {
     if (this.userForm.valid) {
       this.userService.register(this.userForm.value).subscribe({
         next: (data) => {
-          localStorage.setItem('accessToken', data.accessToken);
+          this.cookieService.set('accessToken', data.accessToken);
+          // localStorage.setItem('accessToken', data.accessToken);
           alert('Đăng ký thành công!');
           this.router.navigate(['/login']);
         },

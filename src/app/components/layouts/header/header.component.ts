@@ -10,6 +10,7 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 import { IUser } from '../../../interfaces/Auth';
 import { UserService } from '../../../service/auth.service';
 import { CartService } from '../../../service/cart.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,7 @@ import { CartService } from '../../../service/cart.service';
 export class HeaderComponent implements OnInit {
 [x: string]: any;
   isLogin: boolean = false;
-  userInfo: IUser = {} as IUser;
+  userInfo: any = {} as any;
   searchForm = new FormGroup({
     keywords: new FormControl(''),
   });
@@ -35,24 +36,37 @@ export class HeaderComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private cookieService: CookieService
   ) {}
   ngOnInit(): void {
     this.loadCartItems();
     this.cartService.getCartUpdated().subscribe(() => {
       this.loadCartItems();
     });
-    if (typeof window !== 'undefined' && window.localStorage) {
-      this.isLogin = window.localStorage.getItem('accessToken') ? true : false;
+    if (typeof window !== 'undefined') {
+      this.isLogin = this.cookieService.get('accessToken') ? true : false;
     } else {
       this.isLogin = false;
     }
-    this.userInfo = this.getUserInfoFromLocalStorage();
+    this.userInfo = this.getUserInfoFromCookie();
   }
   loadCartItems(): void {
     this.cartService.getItems().subscribe((items) => {
       this.totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
     });
+  }
+  getUserInfoFromCookie() {
+    const userInfoString = this.cookieService.get('userInfo');
+    if (userInfoString) {
+      try {
+        return JSON.parse(userInfoString);
+      } catch (error) {
+        console.error('Error parsing userInfo from cookie:', error);
+        return null;
+      }
+    }
+    return null;
   }
   getUserInfoFromLocalStorage() {
     if (typeof window !== 'undefined' && window.localStorage) {
@@ -71,7 +85,7 @@ export class HeaderComponent implements OnInit {
   }
   extractUsername(value: string) {
     const regex = /^(\w+)@/;
-    const match = value.match(regex);
+    const match = value?.match(regex);
     if (match) {
       return match[1];
     } else {
@@ -83,11 +97,11 @@ export class HeaderComponent implements OnInit {
     localStorage.clear(); // Xóa tất cả dữ liệu trong LocalStorage
     this.router.navigate(['/login']); // Chuyển hướng đến trang đăng nhập
   }
-  admin() {
-    this.router.navigate(['/admin']);
-  }
 
   cart(): void {
     this.router.navigate(['/cart']);
+  }
+  handleDashboard() {
+    this.router.navigate(['/admin']);
   }
 }

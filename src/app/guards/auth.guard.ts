@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 import { UserService } from '../service/auth.service';
 
 @Injectable({
@@ -8,12 +8,17 @@ import { UserService } from '../service/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private authService: UserService, private router: Router) {}
 
-  canActivate(): boolean {
+  canActivate(route: any, state: any): boolean | UrlTree {
+    const url = state.url;
+
     if (this.authService.isAdmin()) {
-      return true;
+      if (url === '/admin') {
+        return true;
+      } else {
+        return this.router.createUrlTree(['/admin']);
+      }
     } else {
-      this.router.navigate(['/dashboard']);
-      return false;
+      return this.router.createUrlTree(['/']);
     }
   }
 }
