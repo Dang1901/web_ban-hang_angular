@@ -38,7 +38,10 @@ export class DetailComponent implements OnInit {
     if (this.productId) {
       this.cartService.addItem(this.productId, 1).subscribe(() => {
         alert('Sản phẩm đã được thêm vào giỏ hàng!');
-        this.router.navigate(['/cart']);
+        if (confirm('Bạn có muốn thanh toán luôn không!')) {
+          this.router.navigate(['/cart']);
+        }
+        
       });
     }
   }
