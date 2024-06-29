@@ -1,32 +1,44 @@
-// cart.service.ts
-
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { IProduct } from '../interfaces/Product';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject, tap } from 'rxjs';
+import { ICart } from '../interfaces/Cart';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cart: IProduct[] = [];
+  private baseUrl = 'http://localhost:3000/cart';
+  private base = 'http://localhost:3000/cart?_expand=product';
+  private cartUpdated = new Subject<void>();
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
+  
 
-  addToCart(product: IProduct): void {
-    const existingProduct = this.cart.find(item => item.id === product.id);
-    if (existingProduct) {
-      existingProduct.quantity += 1;
-    } else {
-      product.quantity = 1;
-      this.cart.push(product);
-    }
+  getItems(): Observable<ICart[]> {
+    return this.http.get<ICart[]>(this.base);
   }
 
-  getCartItems(): IProduct[] {
-    return this.cart;
+  addItem(productId: number, quantity: number): Observable<ICart> {
+    return this.http.post<ICart>(this.baseUrl, { productId, quantity }).pipe(
+      tap(() => this.cartUpdated.next()) // Phát sự kiện khi thêm sản phẩm vào giỏ hàng
+    );
   }
 
-  clearCart(): void {
-    this.cart = [];
+  removeItem(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`).pipe(
+      tap(() => this.cartUpdated.next()) // Phát sự kiện khi thêm sản phẩm vào giỏ hàng
+    );
+  }
+
+  updateCartItem(item: ICart): Observable<ICart> {
+    const url = `${this.baseUrl}/${item.id}`;
+    return this.http.put<ICart>(url, item);
+  }
+
+  clearCart(): Observable<void> {
+    return this.http.delete<void>(this.baseUrl);
+  }
+  getCartUpdated(): Observable<void> {
+    return this.cartUpdated.asObservable();
   }
 }

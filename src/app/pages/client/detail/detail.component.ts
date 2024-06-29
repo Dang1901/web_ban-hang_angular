@@ -1,37 +1,45 @@
+// src/app/components/detail/detail.component.ts
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../../../interfaces/Product';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../../../service/product.service'; 
+import { IProduct } from '../../../interfaces/Product';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ProductService } from '../../../service/product.service';
 import { CartService } from '../../../service/cart.service';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [],
   templateUrl: './detail.component.html',
-  styleUrl: './detail.component.css',
+  styleUrls: ['./detail.component.css'],
+  imports: [CommonModule, RouterModule],
 })
 export class DetailComponent implements OnInit {
-  productId: string | number | undefined;
+  productId: number | undefined;
   product: IProduct | undefined;
+
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {}
+
   ngOnInit(): void {
-    this.productId = this.route.snapshot.params['id'];
-    console.log(this.productId);
-    this.productService.getProductById(this.productId).subscribe((p) => {
-      this.product = p;
-    });
+    this.productId = +this.route.snapshot.params['id']; // Ép kiểu sang number
+    if (this.productId) {
+      this.productService.getProductById(this.productId).subscribe((p) => {
+        this.product = p;
+      });
+    }
   }
-  buyNow(): void {
-    if (this.product) {
-      this.cartService.addToCart(this.product);
-      // Điều hướng đến trang giỏ hàng sau khi thêm sản phẩm vào giỏ hàng
-      this.router.navigate(['/cart']);
+
+  addToCart(): void {
+    if (this.productId) {
+      this.cartService.addItem(this.productId, 1).subscribe(() => {
+        alert('Sản phẩm đã được thêm vào giỏ hàng!');
+        this.router.navigate(['/cart']);
+      });
     }
   }
 }

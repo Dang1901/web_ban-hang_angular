@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../../../interfaces/Product';
-import { CartService } from '../../../service/cart.service';
+import { ICart } from '../../../interfaces/Cart';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../../service/cart.service';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css',
+  styleUrls: ['./cart.component.css'],
+  imports: [CommonModule],
 })
 export class CartComponent implements OnInit {
-  cartItems: IProduct[] = [];
+  items: ICart[] = [];
   totalItems: number = 0;
   subtotal: number = 0;
 
@@ -19,44 +19,63 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCartItems();
-    this.updateCartSummary();
   }
 
   loadCartItems(): void {
-    this.cartItems = this.cartService.getCartItems();
+    this.cartService.getItems().subscribe((items) => {
+      this.items = items;
+      this.updateCartSummary();
+    });
   }
 
   updateCartSummary(): void {
-    this.totalItems = this.cartItems.reduce(
-      (sum, item) => sum + item.quantity,
-      0
-    );
-    this.subtotal = this.cartItems.reduce(
-      (sum, item) => sum + item.price * item.quantity,
+    this.totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
+    this.subtotal = this.items.reduce(
+      (sum, item) => sum + item.product.price * item.quantity,
       0
     );
   }
 
   increaseQuantity(index: number): void {
-    this.cartItems[index].quantity += 1;
-    this.updateCartSummary();
+    this.items[index].quantity += 1;
+    this.updateCartItem(this.items[index]);
   }
 
   decreaseQuantity(index: number): void {
-    if (this.cartItems[index].quantity > 1) {
-      this.cartItems[index].quantity -= 1;
-      this.updateCartSummary();
+    if (this.items[index].quantity > 1) {
+      this.items[index].quantity -= 1;
+      this.updateCartItem(this.items[index]);
     }
   }
 
-  removeFromCart(index: number): void {
-    this.cartItems.splice(index, 1);
-    this.updateCartSummary();
+  updateCartItem(item: ICart): void {
+    this.cartService.updateCartItem(item).subscribe(() => {
+      this.updateCartSummary();
+    });
+  }
+
+  removeItem(id: number | undefined): void {
+    if (id !== undefined) {
+      this.cartService.removeItem(id).subscribe(() => {
+        this.items = this.items.filter((item) => item.id !== id);
+      });
+    }
   }
 
   clearCart(): void {
-    this.cartService.clearCart();
-    this.cartItems = [];
-    this.updateCartSummary();
+    this.cartService.clearCart().subscribe(() => {
+      this.items = [];
+      this.updateCartSummary();
+    });
+  }
+
+  getTotalCost(): number {
+    return this.items.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    );
+  }
+  cart(): void {
+    alert('Bạn cần mở pro để thêm chức năng!');
   }
 }

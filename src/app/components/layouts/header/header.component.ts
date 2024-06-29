@@ -9,6 +9,7 @@ import {
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { IUser } from '../../../interfaces/Auth';
 import { UserService } from '../../../service/auth.service';
+import { CartService } from '../../../service/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -29,11 +30,24 @@ export class HeaderComponent implements OnInit {
   searchForm = new FormGroup({
     keywords: new FormControl(''),
   });
-
-  constructor(private userService: UserService, private router: Router) {}
+  totalItems: number = 0;
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+    private userService: UserService
+  ) {}
   ngOnInit(): void {
+    this.loadCartItems();
+    this.cartService.getCartUpdated().subscribe(() => {
+      this.loadCartItems();
+    });
     this.isLogin = localStorage.getItem('accessToken') ? true : false;
     this.userInfo = this.getUserInfoFromLocalStorage();
+  }
+  loadCartItems(): void {
+    this.cartService.getItems().subscribe((items) => {
+      this.totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+    });
   }
   getUserInfoFromLocalStorage() {
     const userInfoString = localStorage.getItem('user-info');
@@ -64,5 +78,9 @@ export class HeaderComponent implements OnInit {
   }
   admin() {
     this.router.navigate(['/admin']);
+  }
+
+  cart(): void {
+    this.router.navigate(['/cart']);
   }
 }
