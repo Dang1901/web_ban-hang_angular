@@ -41,8 +41,13 @@ export class HeaderComponent implements OnInit {
     this.cartService.getCartUpdated().subscribe(() => {
       this.loadCartItems();
     });
-    this.isLogin = localStorage.getItem('accessToken') ? true : false;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      this.isLogin = window.localStorage.getItem('accessToken') ? true : false;
+    } else {
+      this.isLogin = false;
+    }
     this.userInfo = this.getUserInfoFromLocalStorage();
+    console.log(this.isLogin);
   }
   loadCartItems(): void {
     this.cartService.getItems().subscribe((items) => {
@@ -50,9 +55,11 @@ export class HeaderComponent implements OnInit {
     });
   }
   getUserInfoFromLocalStorage() {
-    const userInfoString = localStorage.getItem('user-info');
-    if (userInfoString) {
-      return JSON.parse(userInfoString);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const userInfoString = window.localStorage.getItem('user-info');
+      if (userInfoString) {
+        return JSON.parse(userInfoString);
+      }
     }
     return null;
   }
