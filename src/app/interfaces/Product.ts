@@ -1,11 +1,11 @@
 export interface IProduct {
-  id: string | number;
+  id?: string | number;
   name: string;
   price: number;
   quantity: number;
   image: string;
   desc: string;
-  discount: string;
+  discount: number;
 }
 
 export interface ICart {

@@ -4,7 +4,7 @@ import { LayoutClientComponent } from './components/layout-client/layout-client.
 import { LayoutAdminComponent } from './components/layout-admin/layout-admin.component';
 
 import { ProductAddComponent } from './pages/admin/product/product-add/product-add.component';
-import { ProductDetailComponent } from './pages/admin/product/product-detail/product-detail.component';
+
 import { ProductEditComponent } from './pages/admin/product/product-edit/product-edit.component';
 import { LoginComponent } from './pages/client/auth/login/login.component';
 import { RegisterComponent } from './pages/client/auth/register/register.component';
@@ -66,10 +66,7 @@ export const routes: Routes = [
         path: 'add_product',
         component: ProductAddComponent,
       },
-      {
-        path: 'detail_product/:id',
-        component: ProductDetailComponent,
-      },
+
       {
         path: 'edit_product/:id',
         component: ProductEditComponent,

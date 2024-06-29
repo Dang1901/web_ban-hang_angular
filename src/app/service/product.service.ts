@@ -1,6 +1,7 @@
 import { IProduct } from '../interfaces/Product';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -22,5 +23,8 @@ export class ProductService {
   }
   deleteProduct(id: string | number | undefined) {
     return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+  searchProducts(keywords: string): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`${this.baseUrl}`, { params: { name_like: keywords } });
   }
 }
