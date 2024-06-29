@@ -95,6 +95,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   logout() {
+    this.cookieService.deleteAll();
     this.userService.setCurrentUser(null);
     localStorage.clear(); // Xóa tất cả dữ liệu trong LocalStorage
     this.router.navigate(['/login']); // Chuyển hướng đến trang đăng nhập
