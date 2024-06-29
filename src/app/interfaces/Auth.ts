@@ -4,4 +4,5 @@ export interface IUser {
   password: string;
   forgotPassword?: boolean;
   confirmPassword?: boolean;
+  role?: string;
 }
