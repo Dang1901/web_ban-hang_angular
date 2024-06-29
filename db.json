@@ -5,7 +5,7 @@
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "quantity": 30,
       "price": 299999,
-      "discount":12000,
+      "discount": 12000,
       "desc": "Quần jean nữ đẹp và phong cách, đi kèm với nhiều loại trang phục khác nhau.",
       "id": "2"
     },
@@ -14,7 +14,7 @@
       "name": "Giày thể thao unisex",
       "price": 399999,
       "quantity": 20,
-      "discount":12000,
+      "discount": 12000,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Giày thể thao unisex vừa vặn và thoải mái, phù hợp cho mọi hoạt động thể chất."
     },
@@ -23,7 +23,7 @@
       "name": "Túi xách nữ",
       "price": 259999,
       "quantity": 40,
-      "discount":1200,
+      "discount": 1200,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Túi xách nữ tiện dụng và thời trang, phù hợp cho mọi dịp từ đi làm đến dạo phố."
     },
@@ -32,7 +32,7 @@
       "name": "Đồng hồ nam",
       "price": 799999,
       "quantity": 15,
-      "discount":1200,
+      "discount": 1200,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Đồng hồ nam sang trọng và lịch lãm, là điểm nhấn cho phong cách thời trang của bạn."
     },
@@ -41,7 +41,7 @@
       "name": "Áo sơ mi nữ",
       "price": 199999,
       "quantity": 35,
-      "discount":1200,
+      "discount": 1200,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Áo sơ mi nữ thanh lịch và trẻ trung, phù hợp cho các buổi gặp gỡ công việc hoặc hẹn hò."
     },
@@ -50,7 +50,7 @@
       "name": "Quần jogger nam",
       "price": 349999,
       "quantity": 25,
-      "discount":15000,
+      "discount": 15000,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Quần jogger nam thoải mái và cá tính, phù hợp cho mọi hoạt động từ thể thao đến đi chơi."
     },
@@ -59,7 +59,7 @@
       "name": "Áo khoác đông unisex",
       "price": 497799,
       "quantity": 10,
-      "discount":1000,
+      "discount": 1000,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Áo khoác đông unisex ấm áp và thời trang, là lựa chọn hoàn hảo cho mùa đông."
     },
@@ -68,14 +68,11 @@
       "name": "Balo học sinh",
       "price": 227799,
       "quantity": 3000,
-      "discount":20,
+      "discount": 20,
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "desc": "Balo học sinh tiện dụng và nhẹ nhàng, giúp bạn mang theo mọi thứ một cách dễ dàng."
     }
-
   ],
-
-  
   "users": [
     {
       "email": "admin@gmail.com",
@@ -101,6 +98,13 @@
       "confirmPassword": "123456",
       "role": "client",
       "id": 14
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "$2a$10$YMVFum3lbS4CBN8Xew6KcOR9J17IgVabgMmQ3zGyokriBX5Dg.fAi",
+      "confirmPassword": "123456",
+      "role": "client",
+      "id": 15
     }
   ],
   "cart": [
