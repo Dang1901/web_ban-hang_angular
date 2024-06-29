@@ -14,6 +14,8 @@ import { HomePageComponent } from './pages/client/home-page/home-page.component'
 import { DetailComponent } from './pages/client/detail/detail.component';
 import { SearchComponent } from './pages/client/search/search.component';
 import { CartComponent } from './pages/client/cart/cart.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
   {
@@ -51,6 +53,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: LayoutAdminComponent,
+    canActivate: [AdminGuard, AuthGuard],
     children: [
       {
         path: '',
