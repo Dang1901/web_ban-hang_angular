@@ -1,18 +1,18 @@
 // src/app/components/detail/detail.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../../../services/product.service';
-import { CartService } from '../../../services/cart.service';
 import { IProduct } from '../../../interfaces/Product';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ProductService } from '../../../service/product.service';
+import { CartService } from '../../../service/cart.service';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css'],
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule],
 })
 export class DetailComponent implements OnInit {
   productId: number | undefined;
@@ -22,7 +22,7 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private cartService: CartService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {

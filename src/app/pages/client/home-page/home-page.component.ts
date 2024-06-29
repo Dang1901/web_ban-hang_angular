@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IProduct } from '../../../interfaces/Product';
-import { ProductService } from '../../../services/product.service';
+import { ProductService } from '../../../service/product.service'; 
 
 
 @Component({

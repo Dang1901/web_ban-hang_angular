@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../../services/cart.service';
 import { ICart } from '../../../interfaces/Cart';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../../service/cart.service';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
 export class CartComponent implements OnInit {
   items: ICart[] = [];
@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
   }
 
   loadCartItems(): void {
-    this.cartService.getItems().subscribe(items => {
+    this.cartService.getItems().subscribe((items) => {
       this.items = items;
       this.updateCartSummary();
     });
@@ -30,7 +30,10 @@ export class CartComponent implements OnInit {
 
   updateCartSummary(): void {
     this.totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
-    this.subtotal = this.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+    this.subtotal = this.items.reduce(
+      (sum, item) => sum + item.product.price * item.quantity,
+      0
+    );
   }
 
   increaseQuantity(index: number): void {
@@ -54,7 +57,7 @@ export class CartComponent implements OnInit {
   removeItem(id: number | undefined): void {
     if (id !== undefined) {
       this.cartService.removeItem(id).subscribe(() => {
-        this.items = this.items.filter(item => item.id !== id);
+        this.items = this.items.filter((item) => item.id !== id);
       });
     }
   }
@@ -67,9 +70,12 @@ export class CartComponent implements OnInit {
   }
 
   getTotalCost(): number {
-    return this.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+    return this.items.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    );
   }
   cart(): void {
-    alert("Bạn cần mở pro để thêm chức năng!")
+    alert('Bạn cần mở pro để thêm chức năng!');
   }
 }
