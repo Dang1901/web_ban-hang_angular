@@ -15,8 +15,8 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule]
 })
 export class DetailComponent implements OnInit {
-  product: number | undefined;
-  iProduct: IProduct | undefined;
+  productId: number | undefined;
+  product: IProduct | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,17 +26,17 @@ export class DetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.product = +this.route.snapshot.params['id']; // Ép kiểu sang number
-    if (this.product) {
-      this.productService.getProductById(this.product).subscribe((p) => {
-        this.iProduct = p;
+    this.productId = +this.route.snapshot.params['id']; // Ép kiểu sang number
+    if (this.productId) {
+      this.productService.getProductById(this.productId).subscribe((p) => {
+        this.product = p;
       });
     }
   }
 
   addToCart(): void {
-    if (this.product) {
-      this.cartService.addItem(this.product, 1).subscribe(() => {
+    if (this.productId) {
+      this.cartService.addItem(this.productId, 1).subscribe(() => {
         alert('Sản phẩm đã được thêm vào giỏ hàng!');
         this.router.navigate(['/cart']);
       });
