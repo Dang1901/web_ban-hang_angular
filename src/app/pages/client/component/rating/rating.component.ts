@@ -10,8 +10,11 @@ import { Component, Input } from '@angular/core';
 })
 export class RatingComponent {
   @Input() rating: number = 0;
+  ngOnInit(): void {
+    console.log(this.numStars);
+  }
   get numStars(): number {
-    return Math.floor(this.rating);
+    return this.rating % 1 === 0 ? this.rating : Math.floor(this.rating);
   }
 
   get ratingFraction(): number {

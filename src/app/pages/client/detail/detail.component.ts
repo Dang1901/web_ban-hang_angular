@@ -7,13 +7,14 @@ import { RouterModule } from '@angular/router';
 import { ProductService } from '../../../service/product.service';
 import { CartService } from '../../../service/cart.service';
 import { CookieService } from 'ngx-cookie-service';
+import { RatingComponent } from '../component/rating/rating.component';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css'],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, RatingComponent],
 })
 export class DetailComponent implements OnInit {
   productId: number | undefined;

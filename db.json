@@ -7,7 +7,7 @@
       "price": 299999,
       "discount": 12000,
       "desc": "Quần jean nữ đẹp và phong cách, đi kèm với nhiều loại trang phục khác nhau.",
-      "rate": 5,
+      "rate": 3.4,
       "id": 2
     },
     {
@@ -26,7 +26,7 @@
       "quantity": 40,
       "price": 259999,
       "discount": 1200,
-      "rate": 4,
+      "rate": 3,
       "desc": "Túi xách nữ tiện dụng và thời trang, phù hợp cho mọi dịp từ đi làm đến dạo phố.",
       "id": 4
     },

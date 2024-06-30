@@ -3,17 +3,18 @@ import { IProduct } from '../../../../interfaces/Product';
 import { ProductService } from '../../../../service/product.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
+import { RatingComponent } from '../../../client/component/rating/rating.component';
 
 @Component({
   selector: 'app-list-products',
   standalone: true,
-  imports: [CommonModule, RouterModule],
   templateUrl: './list-products.component.html',
-  styleUrl: './list-products.component.css'
+  styleUrl: './list-products.component.css',
+  imports: [CommonModule, RouterModule, RatingComponent],
 })
 export class ListProductsComponent {
   products: IProduct[] | undefined;
-  constructor(private productService: ProductService){}
+  constructor(private productService: ProductService) {}
   loadProducts() {
     this.productService.getProducts().subscribe((products) => {
       this.products = products;
@@ -33,6 +34,6 @@ export class ListProductsComponent {
   }
 
   handleRating(rate: number) {
-    alert('Sản phẩm được đánh giá: ' + rate + ' sao')
+    alert('Sản phẩm được đánh giá: ' + rate + ' sao');
   }
 }

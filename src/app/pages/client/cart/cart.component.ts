@@ -3,13 +3,14 @@ import { ICart } from '../../../interfaces/Cart';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../service/cart.service';
 import { Router } from '@angular/router';
+import { RatingComponent } from '../component/rating/rating.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
-  imports: [CommonModule],
+  imports: [CommonModule, RatingComponent],
 })
 export class CartComponent implements OnInit {
   items: ICart[] = [];
@@ -77,5 +78,15 @@ export class CartComponent implements OnInit {
         this.router.navigate(['/']);
       });
     }
+  }
+  formatCurrency(amount: number): string {
+    const formatter = new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+    const formattedAmount = formatter.format(amount);
+    return formattedAmount.replace('.00', '');
   }
 }
