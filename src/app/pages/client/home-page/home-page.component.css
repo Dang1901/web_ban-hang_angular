@@ -19,3 +19,14 @@
   font-size: 38px;
   color: green;
 }
+.star-rating {
+  display: flex;
+  font-size: 20px;
+}
+.star {
+  color: #ccc;
+  margin-right: 5px;
+}
+.star.active {
+  color: #ffcc00;
+}

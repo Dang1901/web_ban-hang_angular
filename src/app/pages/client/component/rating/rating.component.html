@@ -1,0 +1,14 @@
+<div class="star-rating">
+  <div class="star" *ngFor="let _ of stars; let i = index"
+    [ngClass]="{'active': i < numStars, 'partial': i === numStars && ratingFraction > 0}">
+    <span *ngIf="i < numStars">★</span>
+    <span *ngIf="i === numStars && ratingFraction > 0">
+
+      <!-- <span class="partial-star" [style.width.%]="ratingFraction * 100"></span> -->
+      <span class="half-yellow-half-black" [style.--rating-fraction]="ratingFraction * 100 + '%'">☆</span>
+    </span>
+    <span *ngIf="i > numStars">☆</span>
+  </div>
+  <!-- <div class="half-yellow-half-black">★</div> -->
+
+</div>
