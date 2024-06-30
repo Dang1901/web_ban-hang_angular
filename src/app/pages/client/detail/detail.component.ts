@@ -63,4 +63,14 @@ export class DetailComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
+  formatCurrency(amount: number): string {
+    const formatter = new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+    const formattedAmount = formatter.format(amount);
+    return formattedAmount.replace('.00', '');
+  }
 }
