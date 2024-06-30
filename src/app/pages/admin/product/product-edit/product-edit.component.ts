@@ -27,8 +27,24 @@ export class ProductEditComponent {
       image: ['', Validators.required],
       quantity: ['', [Validators.required, Validators.min(1)]],
       price: ['', [Validators.required, Validators.min(1)]],
+      discount: ['', [Validators.required, Validators.min(0)]],
+      rate: ['', [Validators.required, Validators.max(5), Validators.min(1)]],
       desc: ['', [Validators.required, Validators.minLength(3)]],
     });
+  }
+
+  getErrorMessage(controlName: string): string {
+    const control = this.productForm.get(controlName);
+    if (control?.errors?.['required']) {
+      return 'Bắt buộc phải nhập';
+    } else if (control?.errors?.['minlength']) {
+      return 'Phải nhập lớn hơn 3';
+    } else if (control?.errors?.['min']) {
+      return 'Phải nhập lớn hơn 0';
+    } else if (control?.errors?.['max']) {
+      return 'Phải nhập nhỏ hơn 5'
+    }
+    return '';
   }
 
   loadProduct() {
@@ -54,6 +70,12 @@ export class ProductEditComponent {
           alert('Cập nhập thành công!');
           this.router.navigate(['/admin/list_products']);
         });
+    }
+  }
+  handleCancel() {
+    const confirmCancel = window.confirm('Bạn có chắc chắn muốn hủy không?');
+    if (confirmCancel) {
+      this.router.navigate(['/admin']);
     }
   }
 }

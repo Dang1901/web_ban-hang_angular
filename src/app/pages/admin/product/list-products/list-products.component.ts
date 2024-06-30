@@ -31,4 +31,8 @@ export class ListProductsComponent {
       });
     }
   }
+
+  handleRating(rate: number) {
+    alert('Sản phẩm được đánh giá: ' + rate + ' sao')
+  }
 }

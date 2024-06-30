@@ -25,6 +25,8 @@ export class ProductAddComponent {
       image: ['', Validators.required],
       quantity: ['', [Validators.required, Validators.min(1)]],
       price: ['', [Validators.required, Validators.min(1)]],
+      discount: ['', [Validators.required, Validators.min(1)]],
+      rate: ['', [Validators.required, Validators.max(5), Validators.min(1)]],
       desc: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
@@ -35,9 +37,11 @@ export class ProductAddComponent {
     if (control?.errors?.['required']) {
       return 'Bắt buộc phải nhập';
     } else if (control?.errors?.['minlength']) {
-      return 'Bắt buộc phải nhập lớn hơn 3';
+      return 'Phải nhập lớn hơn 3';
     } else if (control?.errors?.['min']) {
-      return 'Giá phải lớn hơn 0';
+      return 'Phải nhập lớn hơn 0';
+    } else if (control?.errors?.['max']) {
+      return 'Phải nhập nhỏ hơn 5'
     }
     return '';
   }
@@ -49,6 +53,13 @@ export class ProductAddComponent {
           alert('Thêm thành công!');
           this.router.navigate(['/admin/list_products']);
         });
+    }
+  }
+
+  handleCancel() {
+    const confirmCancel = window.confirm('Bạn có chắc chắn muốn hủy không?');
+    if (confirmCancel) {
+      this.router.navigate(['/admin']);
     }
   }
 }
