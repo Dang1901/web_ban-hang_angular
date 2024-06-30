@@ -26,7 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
-[x: string]: any;
+  [x: string]: any;
   isLogin: boolean = false;
   userInfo: any = {} as any;
   searchForm = new FormGroup({
@@ -49,6 +49,8 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isLogin = false;
     }
+    console.log(this.isLogin);
+
     this.userInfo = this.getUserInfoFromCookie();
   }
   loadCartItems(): void {
@@ -93,6 +95,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   logout() {
+    this.cookieService.deleteAll();
     this.userService.setCurrentUser(null);
     localStorage.clear(); // Xóa tất cả dữ liệu trong LocalStorage
     this.router.navigate(['/login']); // Chuyển hướng đến trang đăng nhập

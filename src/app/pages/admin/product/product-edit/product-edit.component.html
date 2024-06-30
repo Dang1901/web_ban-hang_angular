@@ -20,7 +20,6 @@
                       placeholder="Nhập tên sản phẩm..."
                       formControlName="name"
                     />
-
                     <div
                       class="text-danger"
                       *ngIf="
@@ -28,7 +27,7 @@
                         productForm.get('name')?.touched
                       "
                     >
-                      Bắt buộc phải nhập lớn hơn 3
+                      {{ getErrorMessage("name") }}
                     </div>
                   </div>
                 </div>
@@ -64,7 +63,7 @@
                       productForm.get('quantity')?.touched
                     "
                   >
-                  Số lượng phải lớn hơn 0
+                    {{ getErrorMessage("quantity") }}
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
@@ -85,7 +84,49 @@
                       productForm.get('price')?.touched
                     "
                   >
-                    Giá phải lớn hơn 0
+                    {{ getErrorMessage("price") }}
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    <label class="form-label" for="discount">Giảm giá</label>
+                    <input
+                      type="text"
+                      id="discount"
+                      class="form-control form-control-lg"
+                      placeholder="Nhập giá sale (nếu có)..."
+                      formControlName="discount"
+                    />
+                  </div>
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !productForm.get('discount')?.valid &&
+                      productForm.get('discount')?.touched
+                    "
+                  >
+                    {{ getErrorMessage("discount") }}
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div data-mdb-input-init class="form-outline">
+                    <label class="form-label" for="rate">Đánh giá</label>
+                    <input
+                      type="number"
+                      id="rate"
+                      class="form-control form-control-lg"
+                      placeholder="Nhập giá sale (nếu có)..."
+                      formControlName="rate"
+                    />
+                  </div>
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !productForm.get('rate')?.valid &&
+                      productForm.get('rate')?.touched
+                    "
+                  >
+                  {{ getErrorMessage("rate") }}
                   </div>
                 </div>
               </div>
@@ -105,16 +146,23 @@
                     productForm.get('desc')?.touched
                   "
                 >
-                  Bắt buộc phái desc
+                  {{ getErrorMessage("desc") }}
                 </div>
               </div>
 
-              <div class="mt-4 pt-2">
+              <div class="mt-4 pt-2 d-flex space-x-4 gap-3">
                 <input
                   data-mdb-ripple-init
-                  class="btn btn-primary btn-lg"
+                  class="btn btn-primary btn-lg "
                   type="submit"
-                  value="Update"
+                  value="Thêm"
+                />
+                <input
+                  data-mdb-ripple-init
+                  class="btn btn-secondary btn-lg"
+                  type="button"
+                  value="Hủy"
+                  (click)="handleCancel()"
                 />
               </div>
             </form>

@@ -51,6 +51,8 @@
           <th scope="col">Image</th>
           <th scope="col">Quantity</th>
           <th scope="col">Price</th>
+          <th scope="col">Discount</th>
+          <th scope="col">Rate</th>
           <th scope="col">Description</th>
           <th scope="col">Action</th>
           <th></th>
@@ -75,8 +77,14 @@
           <td>
             {{ product.quantity }}
           </td>
-          <td>
+          <td class="text-danger">
             {{ product.price }} ₫
+          </td>
+          <td >
+            {{ product.discount }} ₫
+          </td>
+          <td class="" (click)="handleRating(product.rate)">
+            {{ product.rate }}
           </td>
           <td>
             <span class="badge badge-lg badge-dot">
