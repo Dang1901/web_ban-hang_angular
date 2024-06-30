@@ -1,22 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { IProduct } from '../../../interfaces/Product';
 import { ProductService } from '../../../service/product.service';
 import { BannerComponent } from '../../../components/layouts/banner/banner.component';
 import { CartService } from '../../../service/cart.service';
 import { CookieService } from 'ngx-cookie-service';
+import { RatingComponent } from '../component/rating/rating.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
-  imports: [CommonModule, RouterModule, BannerComponent],
+  imports: [CommonModule, RouterModule, BannerComponent, RatingComponent],
 })
 export class HomePageComponent implements OnInit {
   products: IProduct[] | undefined;
   userInfo: any = {} as any;
+  @Input() rate: number = 0;
   constructor(
     private productService: ProductService,
     private cartService: CartService,
@@ -67,5 +69,13 @@ export class HomePageComponent implements OnInit {
     });
     const formattedAmount = formatter.format(amount);
     return formattedAmount.replace('.00', '');
+  }
+
+  get numStars(): number {
+    return Math.floor(this.rate);
+  }
+
+  get stars(): any[] {
+    return new Array(5);
   }
 }

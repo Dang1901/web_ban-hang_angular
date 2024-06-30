@@ -1,34 +1,15 @@
-<div
-  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
->
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">Quản lý sản phẩm</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
-      <button
-        type="button"
-        class="btn btn-success px-3 py-1"
-        routerLink="/admin/add_product"
-      >
+      <button type="button" class="btn btn-success px-3 py-1" routerLink="/admin/add_product">
         Thêm sản phẩm
       </button>
     </div>
-    <button
-      type="button"
-      class="btn btn-sm px-3 py-1 btn-outline-secondary dropdown-toggle"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="feather feather-calendar"
-        aria-hidden="true"
-      >
+    <button type="button" class="btn btn-sm px-3 py-1 btn-outline-secondary dropdown-toggle">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="feather feather-calendar" aria-hidden="true">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
         <line x1="16" y1="2" x2="16" y2="6"></line>
         <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -67,12 +48,7 @@
             </a>
           </td>
           <td>
-            <img
-              alt="..."
-              src="{{ product.image }}"
-              width="50px"
-              height="50px"
-            />
+            <img alt="..." src="{{ product.image }}" width="50px" height="50px" />
           </td>
           <td>
             {{ product.quantity }}
@@ -80,11 +56,11 @@
           <td class="text-danger">
             {{ product.price }} ₫
           </td>
-          <td >
+          <td>
             {{ product.discount }} ₫
           </td>
-          <td class="" (click)="handleRating(product.rate)">
-            {{ product.rate }}
+          <td class="cursor-pointer" (click)="handleRating(product.rate)">
+            <app-rating [rating]="+product.rate"></app-rating>
           </td>
           <td>
             <span class="badge badge-lg badge-dot">
@@ -92,21 +68,15 @@
             </span>
           </td>
           <td class="text-end">
-          
 
-            <a
-              type="button"
-              class="btn btn-sm btn-square btn-neutral text-danger-hover"
-              [routerLink]="['../edit_product', product.id]"
-            >
+
+            <a type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"
+              [routerLink]="['../edit_product', product.id]">
               <i class="bi bi-pencil"></i>
             </a>
 
-            <button
-              type="button"
-              class="btn btn-sm btn-square btn-neutral text-danger-hover"
-              (click)="handleDelete(product.id)"
-            >
+            <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover"
+              (click)="handleDelete(product.id)">
               <i class="bi bi-trash"></i>
             </button>
           </td>
@@ -115,8 +85,6 @@
     </table>
   </div>
   <div class="card-footer border-0 py-5">
-    <span class="text-muted text-sm"
-      >Showing 10 items out of 250 results found</span
-    >
+    <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item" *ngFor="let image of images; let i = index" [class.active]="i === 0">
-      <img class="w-100 banner-carousel" [src]="image" class="d-block w-100" alt="...">
+      <img class="w-100 banner-carousel" [src]="image" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
