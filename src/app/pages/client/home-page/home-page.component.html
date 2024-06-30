@@ -1,18 +1,38 @@
 <app-banner></app-banner>
 <div class="container py-5">
-  <p class="text-center font-bold title  fw-medium mb-4">Danh sách sản phẩm</p>
+  <p class="text-center font-bold title fw-medium mb-4">Danh sách sản phẩm</p>
   <div class="row g-3">
-    <div class="col-6 col-md-3 card-parent position-relative " *ngFor="let product of products ">
-      <div class="position-absolute bg-danger px-2 py-1 text-white " style="font-size: 0.8rem;">HOT</div>
-      <a [routerLink]="['/detail', product.id]" class="card bg-light text-dark shadow-sm text-decoration-none">
-        <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}" />
+    <div
+      class="col-6 col-md-3 card-parent position-relative"
+      *ngFor="let product of products"
+    >
+      <div
+        class="position-absolute bg-danger px-2 py-1 text-white"
+        style="font-size: 0.8rem"
+      >
+        HOT
+      </div>
+      <a
+        [routerLink]="['/detail', product.id]"
+        class="card bg-light text-dark shadow-sm text-decoration-none"
+      >
+        <img
+          src="{{ product.image }}"
+          class="card-img-top"
+          alt="{{ product.name }}"
+        />
         <div class="card-body">
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text text-danger">
             Chỉ còn {{ formatCurrency(product.price) }}
-            <span class="text-decoration-line-through text-muted">{{ formatCurrency(product.discount) }}</span>
+            <span class="text-decoration-line-through text-muted">{{
+              formatCurrency(product.discount)
+            }}</span>
           </p>
-          <button class="btn btn-outline-primary" (click)="addToCart(product.id)">
+          <button
+            class="btn btn-outline-primary"
+            (click)="addToCart(product.id)"
+          >
             Thêm
           </button>
         </div>

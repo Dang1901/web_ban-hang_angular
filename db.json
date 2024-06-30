@@ -122,6 +122,16 @@
       "productId": 8,
       "quantity": 1,
       "id": 3
+    },
+    {
+      "productId": 2,
+      "quantity": 1,
+      "id": 4
+    },
+    {
+      "productId": 2,
+      "quantity": 1,
+      "id": 5
     }
   ]
 }
