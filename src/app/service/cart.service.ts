@@ -25,13 +25,23 @@ export class CartService {
   getItems(): Observable<ICart[]> {
     return this.http.get<ICart[]>(this.base);
   }
-
+  getSingleCartItem(id: string): Observable<ICart> {
+    return this.http.get<ICart>(`${this.base}/${id}`);
+  }
   addItem(productId: number, quantity: number): Observable<ICart> {
     return this.http.post<ICart>(this.baseUrl, { productId, quantity }).pipe(
       tap(() => this.cartUpdated.next()) // Phát sự kiện khi thêm sản phẩm vào giỏ hàng
     );
   }
-
+  addCartItem(
+    productId: number,
+    body: ICart,
+    quantity: number
+  ): Observable<ICart> {
+    return this.http.post<ICart>(this.base, { productId, body, quantity }).pipe(
+      tap(() => this.cartUpdated.next()) // Phát sự kiện khi thêm sản phẩm vào giỏ hàng
+    );
+  }
   removeItem(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`).pipe(
       tap(() => this.cartUpdated.next()) // Phát sự kiện khi thêm sản phẩm vào giỏ hàng

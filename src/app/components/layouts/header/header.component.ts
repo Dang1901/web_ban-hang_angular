@@ -51,6 +51,11 @@ export class HeaderComponent implements OnInit {
     }
     this.userInfo = this.getUserInfoFromCookie();
   }
+  ngAfterViewChecked(): void {
+    this.cartService.getCartUpdated().subscribe(() => {
+      this.loadCartItems();
+    });
+  }
   loadCartItems(): void {
     this.cartService.getItems().subscribe((items) => {
       this.totalItems = items.reduce((sum, item) => sum + item.quantity, 0);

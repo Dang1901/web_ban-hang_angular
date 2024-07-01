@@ -8,6 +8,7 @@ import { CartService } from '../../../service/cart.service';
 import { CookieService } from 'ngx-cookie-service';
 import { RatingComponent } from '../component/rating/rating.component';
 import { ICart } from '../../../interfaces/Cart';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -20,6 +21,8 @@ export class HomePageComponent implements OnInit {
   products: IProduct[] | undefined;
   userInfo: any = {} as any;
   carts: ICart[] = [];
+  cart: any = {} as any;
+  isCartUpdated: boolean = false;
   @Input() rate: number = 0;
   constructor(
     private productService: ProductService,
@@ -35,26 +38,48 @@ export class HomePageComponent implements OnInit {
     this.cartService.getItems().subscribe((item) => {
       this.carts = item;
     });
+    console.log(this.cart);
+  }
+  ngAfterViewChecked(): void {
+    if (this.isCartUpdated) {
+      this.cartService.getItems().subscribe((item) => {
+        this.carts = item;
+      });
+      this.isCartUpdated = false;
+    }
   }
   addToCart(id: any) {
     if (this.userInfo) {
       // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
       const existingItem = this.carts.find((item) => item.product.id === id);
-      if (existingItem) {
+      this.productService
+        .getProductById(id)
+        .pipe(
+          tap((cart) => {
+            console.log('Giá trị của this.cart:', cart);
+          })
+        )
+        .subscribe((cart) => {
+          this.cart = cart;
+        });
+      console.log(this.cart);
+
+      if (!!existingItem) {
         const quantity = +existingItem?.quantity + 1;
         // Nếu sản phẩm đã có, tăng số lượng lên 1
         this.cartService
           .updateCartQuantity(existingItem.id, quantity)
           .subscribe((updatedCart) => {
             alert('Sản phẩm đã được thêm vào giỏ hàng!');
-            if (confirm('Bạn có muốn thanh toán luôn không?')) {
-              this.router.navigate(['/cart']);
-            }
+            // if (confirm('Bạn có muốn thanh toán luôn không?')) {
+            //   this.router.navigate(['/cart']);
+            // }
           });
       } else {
-        // Nếu sản phẩm chưa có, thêm mới vào giỏ hàng
         this.cartService.addItem(id, 1).subscribe(
           () => {
+            this.isCartUpdated = true;
+            // this.cartService.addCartItem(id, this.cart, 1).subscribe();
             alert('Sản phẩm đã được thêm vào giỏ hàng!');
             if (confirm('Bạn có muốn thanh toán luôn không?')) {
               this.router.navigate(['/cart']);
