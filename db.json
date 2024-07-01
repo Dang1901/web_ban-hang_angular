@@ -117,29 +117,34 @@
   ],
   "cart": [
     {
-      "productId": 5,
-      "quantity": 1,
-      "id": 1
-    },
-    {
-      "productId": 5,
-      "quantity": 1,
-      "id": 2
-    },
-    {
-      "productId": 4,
-      "quantity": 1,
-      "id": 3
-    },
-    {
       "productId": 2,
-      "quantity": 1,
-      "id": 4
+      "quantity": 3,
+      "id": 1,
+      "product": {
+        "name": "Quần jean nữ 1 update",
+        "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
+        "quantity": 30,
+        "price": 299999,
+        "discount": 12000,
+        "desc": "Quần jean nữ đẹp và phong cách, đi kèm với nhiều loại trang phục khác nhau.",
+        "rate": 3.4,
+        "id": 2
+      }
     },
     {
-      "productId": 2,
+      "productId": 3,
       "quantity": 1,
-      "id": 5
+      "id": 2,
+      "product": {
+        "id": 3,
+        "name": "Giày thể thao unisex",
+        "price": 399999,
+        "quantity": 20,
+        "discount": 12000,
+        "rate": 1,
+        "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
+        "desc": "Giày thể thao unisex vừa vặn và thoải mái, phù hợp cho mọi hoạt động thể chất."
+      }
     }
   ]
 }

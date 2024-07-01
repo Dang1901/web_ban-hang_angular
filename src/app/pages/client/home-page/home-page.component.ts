@@ -7,6 +7,7 @@ import { BannerComponent } from '../../../components/layouts/banner/banner.compo
 import { CartService } from '../../../service/cart.service';
 import { CookieService } from 'ngx-cookie-service';
 import { RatingComponent } from '../component/rating/rating.component';
+import { ICart } from '../../../interfaces/Cart';
 
 @Component({
   selector: 'app-home-page',
@@ -18,6 +19,7 @@ import { RatingComponent } from '../component/rating/rating.component';
 export class HomePageComponent implements OnInit {
   products: IProduct[] | undefined;
   userInfo: any = {} as any;
+  carts: ICart[] = [];
   @Input() rate: number = 0;
   constructor(
     private productService: ProductService,
@@ -30,20 +32,41 @@ export class HomePageComponent implements OnInit {
       this.products = products;
     });
     this.userInfo = this.getUserInfoFromCookie();
+    this.cartService.getItems().subscribe((item) => {
+      this.carts = item;
+    });
   }
   addToCart(id: any) {
     if (this.userInfo) {
-      if (id) {
-        this.cartService.addItem(id, 1).subscribe(() => {
-          alert('Sản phẩm đã được thêm vào giỏ hàng!');
-          if (confirm('Bạn có muốn thanh toán luôn không!')) {
-            this.router.navigate(['/cart']);
+      // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
+      const existingItem = this.carts.find((item) => item.product.id === id);
+      if (existingItem) {
+        const quantity = +existingItem?.quantity + 1;
+        // Nếu sản phẩm đã có, tăng số lượng lên 1
+        this.cartService
+          .updateCartQuantity(existingItem.id, quantity)
+          .subscribe((updatedCart) => {
+            alert('Sản phẩm đã được thêm vào giỏ hàng!');
+            if (confirm('Bạn có muốn thanh toán luôn không?')) {
+              this.router.navigate(['/cart']);
+            }
+          });
+      } else {
+        // Nếu sản phẩm chưa có, thêm mới vào giỏ hàng
+        this.cartService.addItem(id, 1).subscribe(
+          () => {
+            alert('Sản phẩm đã được thêm vào giỏ hàng!');
+            if (confirm('Bạn có muốn thanh toán luôn không?')) {
+              this.router.navigate(['/cart']);
+            }
+          },
+          (error) => {
+            console.error('Lỗi khi thêm sản phẩm vào giỏ hàng:', error);
+            alert('Có lỗi xảy ra, vui lòng thử lại sau.');
           }
-        });
+        );
       }
-      return;
-    }
-    if (!this.userInfo) {
+    } else {
       alert('Bạn cần đăng nhập để mua hàng!');
       this.router.navigate(['/login']);
     }

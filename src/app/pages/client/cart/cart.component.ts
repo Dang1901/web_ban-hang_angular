@@ -16,16 +16,28 @@ export class CartComponent implements OnInit {
   items: ICart[] = [];
   totalItems: number = 0;
   subtotal: number = 0;
-
+  newItems: any[] = [];
   constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadCartItems();
   }
+  createNewItems() {
+    const itemMap: { [key: number]: any } = {};
 
+    this.items.forEach((item: any) => {
+      if (itemMap[item.productId]) {
+        itemMap[item.productId].quantity += item.quantity;
+      } else {
+        itemMap[item.productId] = { ...item };
+      }
+    });
+
+    this.newItems = Object.values(itemMap);
+  }
   loadCartItems(): void {
-    this.cartService.getItems().subscribe((items) => {
-      this.items = items;
+    this.cartService.getItems().subscribe((itemCart) => {
+      this.items = itemCart;
       this.updateCartSummary();
     });
   }
