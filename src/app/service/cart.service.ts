@@ -103,6 +103,8 @@ export class CartService {
   }
   updateCartQuantity(id: string | number | undefined, quantity: number) {
     const body = { quantity };
-    return this.http.patch(`${this.baseUrl}/${id}`, body);
+    return this.http.patch(`${this.baseUrl}/${id}`, body).pipe(
+      tap(() => this.cartUpdated.next()) // Phát sự kiện khi cập nhật số lượng sản phẩm trong giỏ hàng
+    );
   }
 }

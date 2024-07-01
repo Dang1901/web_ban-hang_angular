@@ -117,14 +117,29 @@
   ],
   "cart": [
     {
-      "productId": 2,
-      "quantity": 4,
-      "id": 1
+      "productId": 3,
+      "quantity": 1,
+      "id": 1,
+      "product": {
+        "id": 3,
+        "name": "Giày thể thao unisex",
+        "price": 399999,
+        "quantity": 20,
+        "discount": 12000,
+        "rate": 1,
+        "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
+        "desc": "Giày thể thao unisex vừa vặn và thoải mái, phù hợp cho mọi hoạt động thể chất."
+      }
     },
     {
-      "productId": 7,
-      "quantity": 2,
+      "productId": 5,
+      "quantity": 1,
       "id": 2
+    },
+    {
+      "productId": 4,
+      "quantity": 1,
+      "id": 3
     }
   ]
 }
