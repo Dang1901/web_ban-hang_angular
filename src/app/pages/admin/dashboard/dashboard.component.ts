@@ -27,7 +27,6 @@ export class DashboardComponent {
   handleDelete(id: string | number | undefined) {
     if (confirm('Bạn có chắc chắn muốn xóa không?')) {
       this.userService.deleteUser(id).subscribe(() => {
-        console.log('Product deleted successfully!');
         alert('Xóa thành công!');
         this.loadProducts(); // Reload the products after deletion
       });

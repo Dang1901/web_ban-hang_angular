@@ -49,8 +49,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isLogin = false;
     }
-    console.log(this.isLogin);
-
     this.userInfo = this.getUserInfoFromCookie();
   }
   loadCartItems(): void {

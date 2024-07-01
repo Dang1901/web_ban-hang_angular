@@ -1,13 +1,13 @@
 {
   "products": [
     {
-      "name": "Quần jean nữ 1 update",
+      "name": "Quần jean nữ 1",
       "image": "https://media3.coolmate.me/cdn-cgi/image/quality=80,format=auto/uploads/April2023/Ao_thun_oversize_84RISING_Mickey_Mouse_-_Denz9.jpg",
       "quantity": 30,
       "price": 299999,
       "discount": 12000,
-      "desc": "Quần jean nữ đẹp và phong cách, đi kèm với nhiều loại trang phục khác nhau.",
       "rate": 3.4,
+      "desc": "Quần jean nữ đẹp và phong cách, đi kèm với nhiều loại trang phục khác nhau.",
       "id": 2
     },
     {
@@ -117,29 +117,14 @@
   ],
   "cart": [
     {
-      "productId": 5,
-      "quantity": 1,
+      "productId": 2,
+      "quantity": 4,
       "id": 1
     },
     {
-      "productId": 5,
-      "quantity": 1,
+      "productId": 7,
+      "quantity": 2,
       "id": 2
-    },
-    {
-      "productId": 4,
-      "quantity": 1,
-      "id": 3
-    },
-    {
-      "productId": 2,
-      "quantity": 1,
-      "id": 4
-    },
-    {
-      "productId": 2,
-      "quantity": 1,
-      "id": 5
     }
   ]
 }
