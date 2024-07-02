@@ -53,15 +53,10 @@ export class HomePageComponent implements OnInit {
       const existingItem = this.carts.find((item) => item.product.id === id);
       this.productService
         .getProductById(id)
-        .pipe(
-          tap((cart) => {
-            // console.log('Giá trị của this.cart:', cart);
-          })
-        )
+        .pipe(tap((cart) => {}))
         .subscribe((cart) => {
           this.cart = cart;
         });
-      console.log(this.cart);
 
       if (!!existingItem) {
         const quantity = +existingItem?.quantity + 1;

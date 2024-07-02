@@ -55,7 +55,6 @@ export class HeaderComponent implements OnInit {
     this.cartService.getCartUpdated().subscribe(() => {
       this.loadCartItems();
     });
-    console.log(this.totalItems);
   }
   loadCartItems(): void {
     this.cartService.getItems().subscribe((items) => {
