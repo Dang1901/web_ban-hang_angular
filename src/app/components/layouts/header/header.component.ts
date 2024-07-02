@@ -55,10 +55,11 @@ export class HeaderComponent implements OnInit {
     this.cartService.getCartUpdated().subscribe(() => {
       this.loadCartItems();
     });
+    console.log(this.totalItems);
   }
   loadCartItems(): void {
     this.cartService.getItems().subscribe((items) => {
-      this.totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+      this.totalItems = items.length;
     });
   }
   getUserInfoFromCookie() {

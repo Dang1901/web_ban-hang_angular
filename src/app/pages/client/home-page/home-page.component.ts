@@ -38,7 +38,6 @@ export class HomePageComponent implements OnInit {
     this.cartService.getItems().subscribe((item) => {
       this.carts = item;
     });
-    console.log(this.cart);
   }
   ngAfterViewChecked(): void {
     if (this.isCartUpdated) {
@@ -56,7 +55,7 @@ export class HomePageComponent implements OnInit {
         .getProductById(id)
         .pipe(
           tap((cart) => {
-            console.log('Giá trị của this.cart:', cart);
+            // console.log('Giá trị của this.cart:', cart);
           })
         )
         .subscribe((cart) => {
@@ -70,10 +69,13 @@ export class HomePageComponent implements OnInit {
         this.cartService
           .updateCartQuantity(existingItem.id, quantity)
           .subscribe((updatedCart) => {
-            alert('Sản phẩm đã được thêm vào giỏ hàng!');
-            // if (confirm('Bạn có muốn thanh toán luôn không?')) {
-            //   this.router.navigate(['/cart']);
-            // }
+            this.cartService.getItems().subscribe((items) => {
+              this.carts = items;
+              alert('Sản phẩm đã được thêm vào giỏ hàng!');
+              if (confirm('Bạn có muốn thanh toán luôn không?')) {
+                this.router.navigate(['/cart']);
+              }
+            });
           });
       } else {
         this.cartService.addItem(id, 1).subscribe(
